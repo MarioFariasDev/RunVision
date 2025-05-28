@@ -13,43 +13,66 @@
 </header>
 
 <main>
-    <section class="form-section">
-        <h2>Monte sua planilha</h2>
-        <form id="training-form">
-            <label for="distance">Distância alvo:</label>
-            <select id="distance" required>
-                <option value="5">5 km</option>
-                <option value="10">10 km</option>
-                <option value="21">21 km</option>
-                <option value="42">42 km</option>
-            </select>
+    <nav class="tab-nav">
+        <button class="tab-button active" data-tab="planilha-tab">Planilha de Treino</button>
+        <button class="tab-button" data-tab="dicas-tab">Dicas de Treino</button>
+    </nav>
 
-            <label for="level">Nível:</label>
-            <select id="level" required>
-                <option value="iniciante">Iniciante</option>
-                <option value="intermediario">Intermediário</option>
-                <option value="avancado">Avançado</option>
-            </select>
+    <section id="planilha-tab" class="tab-content active">
+        <section class="form-section">
+            <h2>Monte sua planilha</h2>
+            <form id="training-form">
+                <label for="distance">Distância alvo:</label>
+                <select id="distance" required>
+                    <option value="5">5 km</option>
+                    <option value="10">10 km</option>
+                    <option value="21">21 km</option>
+                    <option value="42">42 km</option>
+                </select>
 
-            <label for="days">Dias por semana:</label>
-            <select id="days" required>
-                <option value="3">3 dias</option>
-                <option value="4">4 dias</option>
-                <option value="5">5 dias</option>
-                <option value="6">6 dias</option>
-            </select>
+                <label for="level">Nível:</label>
+                <select id="level" required>
+                    <option value="iniciante">Iniciante</option>
+                    <option value="intermediario">Intermediário</option>
+                    <option value="avancado">Avançado</option>
+                </select>
 
-            <label for="semanas">Quantas semanas faltam para sua prova?</label>
-            <input type="number" id="semanas" min="1" max="24" required>
+                <label for="days">Dias por semana:</label>
+                <select id="days" required>
+                    <option value="3">3 dias</option>
+                    <option value="4">4 dias</option>
+                    <option value="5">5 dias</option>
+                    <option value="6">6 dias</option>
+                </select>
 
-            <button type="submit">Gerar Planilha</button>
-        </form>
+                <label for="semanas">Quantas semanas faltam para sua prova?</label>
+                <input type="number" id="semanas" min="1" max="24" required>
+
+                <button type="submit">Gerar Planilha</button>
+            </form>
+        </section>
+
+        <section class="result-section">
+            <h2>Sua Planilha</h2>
+            <div id="planilha"></div>
+            <button id="download-pdf" style="display:none;">Baixar PDF</button>
+        </section>
     </section>
 
-    <section class="result-section">
-        <h2>Sua Planilha</h2>
-        <div id="planilha"></div>
-        <button id="download-pdf" style="display:none;">Baixar PDF</button>
+    <section id="dicas-tab" class="tab-content">
+        <section class="result-section">
+            <h2>Dicas de Treino em Vídeo</h2>
+            <ul style="padding-left: 1rem; line-height: 1.8;">
+                <li><a href="https://www.youtube.com/watch?v=7Y9XPpbmn2E" target="_blank">✅ Drills para Corrida (Técnica de Corrida)</a></li>
+                <li><a href="https://www.youtube.com/watch?v=8KlZ3ze5HIY" target="_blank">✅ Fartlek na Prática</a></li>
+                <li><a href="https://www.youtube.com/watch?v=1TFFULDQaUU" target="_blank">✅ Intervalado: Como Fazer Corretamente</a></li>
+                <li><a href="https://www.youtube.com/watch?v=dOdDLstL__g" target="_blank">✅ Longão: O Treino Mais Importante</a></li>
+                <li><a href="https://www.youtube.com/watch?v=EUve1lNtqOI" target="_blank">✅ Ritmo Controlado (Tempo Run)</a></li>
+                <li><a href="https://www.youtube.com/watch?v=gXGzHWnLjLM" target="_blank">✅ Corrida Regenerativa: Importância</a></li>
+                <li><a href="https://www.youtube.com/watch?v=fOaa-_WA5tk" target="_blank">✅ Técnicas de Educativos para Corrida</a></li>
+            </ul>
+
+        </section>
     </section>
 </main>
 
