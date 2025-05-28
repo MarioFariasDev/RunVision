@@ -184,3 +184,34 @@ footer img {
 .whatsapp-button:hover {
     transform: scale(1.05);
 }
+.tab-nav {
+  max-width: 800px;
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.tab-button {
+  padding: 0.6rem 1.2rem;
+  background-color: #e2e8f0;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.tab-button.active {
+  background-color: #0ea5e9;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
