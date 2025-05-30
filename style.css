@@ -263,3 +263,62 @@ a.button:hover {
     align-items: center;
     text-align: center;
 }
+/* RESPONSIVO - MOBILE FIRST */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  .tab-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .form-section,
+  .result-section {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  form select,
+  form input,
+  form button {
+    font-size: 0.95rem;
+    padding: 0.6rem;
+  }
+
+  .semana {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  #planilha details summary {
+    font-size: 0.95rem;
+  }
+
+  .store-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .whatsapp-button {
+    right: 10px;
+    bottom: 10px;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  footer {
+    font-size: 0.9rem;
+    padding: 1.5rem 1rem;
+  }
+
+  #download-pdf {
+    width: 100%;
+    padding: 0.75rem;
+  }
+}
