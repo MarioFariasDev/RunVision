@@ -11,13 +11,39 @@ document.getElementById('training-form').addEventListener('submit', function (e)
   document.getElementById('download-pdf').style.display = 'block';
 });
 
-// FASES DO MACROCICLO
 function determinarFase(semana) {
   if (semana <= 4) return "Base";
   if (semana <= 8) return "Construção";
   if (semana <= 12) return "Pico";
   if (semana <= 14) return "Polimento";
   return "Recuperação";
+}
+
+function gerarDicasHTML() {
+  return `
+    <section class="dicas-section">
+      <h2>Dicas de Treino</h2>
+      <p>Confira vídeos úteis sobre os principais tipos de treino:</p>
+      <ul>
+        <li><strong>Drills (técnica de corrida):</strong> <a href="https://www.youtube.com/watch?v=bm8mYVVZy0k" target="_blank">Drills essenciais para corrida</a></li>
+        <li><strong>Fartlek:</strong> <a href="https://www.youtube.com/watch?v=6dQ9aJYcMZc" target="_blank">Como fazer Fartlek corretamente</a></li>
+        <li><strong>Intervalado:</strong> <a href="https://www.youtube.com/watch?v=dkRZzDUF1wo" target="_blank">Treino intervalado para performance</a></li>
+        <li><strong>Tempo Run:</strong> <a href="https://www.youtube.com/watch?v=iL0_EoJ3cZc" target="_blank">Corrida em ritmo constante</a></li>
+        <li><strong>Longão:</strong> <a href="https://www.youtube.com/watch?v=UGuUga-1Go8" target="_blank">Como fazer o longão corretamente</a></li>
+        <li><strong>Regenerativo:</strong> <a href="https://www.youtube.com/watch?v=OMVDK5Ar0iA" target="_blank">Importância do treino regenerativo</a></li>
+        <li><strong>Ritmo de prova:</strong> <a href="https://www.youtube.com/watch?v=_a0GywAFMKU" target="_blank">Como encontrar seu pace ideal</a></li>
+        <li><strong>Simulado:</strong> <a href="https://www.youtube.com/watch?v=vb7_M-k7bJQ" target="_blank">Simulado de corrida de rua</a></li>
+        <li><strong>Educativos:</strong> <a href="https://www.youtube.com/watch?v=Z-wVu2Ke_pE" target="_blank">Educativos para melhorar sua corrida</a></li>
+      </ul>
+    </section>
+  `;
+}
+
+function exibirDicas() {
+  const dicasHTML = gerarDicasHTML();
+  const dicasContainer = document.createElement('div');
+  dicasContainer.innerHTML = dicasHTML;
+  document.querySelector('.result-section').appendChild(dicasContainer);
 }
 
 function gerarPlanilha(distance, level, days, semanasTotais) {
@@ -162,34 +188,27 @@ function gerarPlanilha(distance, level, days, semanasTotais) {
 
 // PDF COM VISUAL MELHORADO
 const { jsPDF } = window.jspdf;
-
 document.getElementById('download-pdf').addEventListener('click', function () {
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
 
   const content = document.getElementById('planilha');
-
-  // Clona e expande detalhes
   const clone = content.cloneNode(true);
   clone.querySelectorAll('details').forEach(d => d.open = true);
 
   const semanas = clone.querySelectorAll('.semana');
-  let y = 20;
+  let y = 35;
 
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(16);
-  doc.text('Plano de Treino Personalizado – RunVision', 105, 15, { align: 'center' });
+  doc.text('Plano de Treino Personalizado – RunVision', 105, 20, { align: 'center' });
 
-  semanas.forEach((semana, index) => {
+  semanas.forEach((semana) => {
     const titulo = semana.querySelector('h3')?.innerText || '';
     const fase = semana.querySelector('p')?.innerText || '';
     const treinos = semana.querySelectorAll('li');
 
-    if (y > 260) {
-      doc.addPage();
-      y = 20;
-    }
+    if (y > 260) { doc.addPage(); y = 20; }
 
-    // Semana + fase
     doc.setFontSize(13);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(33, 37, 41);
@@ -202,13 +221,8 @@ document.getElementById('download-pdf').addEventListener('click', function () {
     doc.text(fase, 10, y);
     y += 6;
 
-    // Treinos
     treinos.forEach((treino) => {
-      if (y > 275) {
-        doc.addPage();
-        y = 20;
-      }
-
+      if (y > 275) { doc.addPage(); y = 20; }
       const texto = treino.innerText.trim();
       const lines = doc.splitTextToSize(texto, 180);
       doc.setFontSize(10);
@@ -217,7 +231,7 @@ document.getElementById('download-pdf').addEventListener('click', function () {
       y += lines.length * 5 + 2;
     });
 
-    y += 5; // Espaço extra entre semanas
+    y += 5;
   });
 
   doc.save('planilha-runvision.pdf');
