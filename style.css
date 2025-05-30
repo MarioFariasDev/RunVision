@@ -6,101 +6,121 @@
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f3f4f6;
-    color: #111827;
+    background-color: #0d0d0d;
+    color: #f3f4f6;
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
 }
 
 /* HEADER */
 header {
-    background-color: #0f172a;
-    color: #fff;
+    background: #0d0d0d;
     text-align: center;
     padding: 2rem 1rem;
+    border-bottom: 1px solid #1f2937;
 }
-
 header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    color: #f97316;
+}
+header p {
+    color: #cbd5e1;
 }
 
-header p {
-    font-size: 1.2rem;
-    opacity: 0.9;
+/* NAV */
+.tab-nav {
+    display: flex;
+    justify-content: center;
+    background: #111827;
+    padding: 1rem;
+    gap: 1rem;
+}
+button,
+.tab-button,
+a.button {
+    background-color: #f97316;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+button:hover,
+.tab-button:hover {
+    background-color: #ea580c;
+    transform: scale(1.03);
+}
+.tab-content {
+    display: none;
+    padding: 2rem 1rem;
+}
+.tab-content.active {
+    display: block;
 }
 
 /* FORMULÁRIO */
 .form-section {
     max-width: 600px;
     margin: 2rem auto;
-    background-color: #fff;
+    background-color: #1f2937;
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
-
 form label {
     display: block;
     margin-top: 1rem;
     font-weight: bold;
+    color: #f3f4f6;
 }
-
 form select,
 form input,
 form button {
     width: 100%;
     padding: 0.75rem;
     margin-top: 0.5rem;
-    border: 1px solid #cbd5e1;
+    border: 1px solid #374151;
     border-radius: 8px;
     font-size: 1rem;
+    background-color: #0d1117;
+    color: #f3f4f6;
 }
-
 form button {
-    background-color: #0ea5e9;
-    color: #fff;
-    border: none;
+    background-color: #f97316;
     font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin-top: 1.5rem;
 }
-
 form button:hover {
-    background-color: #0284c7;
+    background-color: #ea580c;
 }
 
 /* RESULTADO */
 .result-section {
     max-width: 800px;
     margin: 2rem auto;
-    background: #fff;
+    background: #1f2937;
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
-
 .result-section h2 {
     margin-bottom: 1rem;
+    color: #f97316;
 }
 
 /* BLOCO SEMANAL */
 .semana {
     margin-bottom: 2rem;
     padding: 1.5rem;
-    border-left: 6px solid #0ea5e9;
-    background-color: #f9fafb;
+    border-left: 6px solid #f97316;
+    background-color: #111827;
     border-radius: 8px;
 }
-
 .semana h3 {
     margin-bottom: 0.25rem;
 }
-
 .semana p {
     font-size: 0.95rem;
-    color: #334155;
+    color: #94a3b8;
     margin-bottom: 1rem;
 }
 
@@ -109,34 +129,31 @@ form button:hover {
     list-style: none;
     padding-left: 0;
 }
-
 #planilha li {
     margin-bottom: 0.75rem;
 }
-
 #planilha details {
-    background-color: #fff;
-    border: 1px solid #cbd5e1;
+    background-color: #0d1117;
+    border: 1px solid #334155;
     border-radius: 6px;
     padding: 0.75rem;
     cursor: pointer;
     transition: all 0.2s ease;
+    color: #f3f4f6;
 }
-
 #planilha summary {
     font-weight: 600;
     font-size: 1rem;
-    color: #0f172a;
+    color: #f97316;
     list-style: none;
 }
-
 #planilha details[open] {
-    background-color: #e0f2fe;
+    background-color: #1e293b;
 }
-
 #planilha details p {
     margin-top: 0.5rem;
     font-size: 0.95rem;
+    color: #e2e8f0;
 }
 
 /* BOTÃO PDF */
@@ -149,21 +166,21 @@ form button:hover {
     border-radius: 8px;
     cursor: pointer;
 }
-
 #download-pdf:hover {
     background-color: #15803d;
 }
 
 /* FOOTER */
 footer {
-    background: #1e293b;
-    color: white;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    padding: 2rem;
     text-align: center;
-    padding: 2rem 1rem;
+    color: #cbd5e1;
+    border-top: 1px solid #334155;
 }
-
 footer img {
     margin-top: 1rem;
+    max-width: 150px;
 }
 
 /* WHATSAPP */
@@ -177,41 +194,72 @@ footer img {
     border-radius: 50px;
     text-decoration: none;
     font-weight: bold;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease;
 }
-
 .whatsapp-button:hover {
     transform: scale(1.05);
 }
-.tab-nav {
-  max-width: 800px;
-  margin: 1rem auto;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  padding: 1rem;
+
+/* LOJA E DOAÇÕES */
+.store-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+.store-item {
+    background: #111827;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+.store-item:hover {
+    transform: translateY(-4px);
+}
+.store-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #f97316;
+}
+.store-item p {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+}
+.store-item a {
+    display: inline-block;
+    background: #0ea5e9;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.store-item a:hover {
+    background: #0284c7;
 }
 
-.tab-button {
-  padding: 0.6rem 1.2rem;
-  background-color: #e2e8f0;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+/* TÍTULOS */
+h1, h2, h3 {
+    text-align: center;
 }
 
-.tab-button.active {
-  background-color: #0ea5e9;
-  color: white;
+/* ANIMAÇÕES */
+button,
+a.button {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+button:hover,
+a.button:hover {
+    transform: scale(1.03);
 }
 
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
+#doar-tab .result-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
