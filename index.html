@@ -1,181 +1,232 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RunVision - Planilhas de Corrida</title>
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WHZPVPE8RJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WHZPVPE8RJ');
-</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RunVision - Planilhas de Corrida</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
+  <header>
     <h1>RunVision</h1>
     <p>Planilhas de treino, dicas e apoio ao corredor</p>
-</header>
+  </header>
 
-<main>
+  <main>
     <nav class="tab-nav">
-        <button class="tab-button active" data-tab="planilha-tab">Planilha de Treino</button>
-        <button class="tab-button" data-tab="dicas-tab">Dicas de Treino</button>
-        <button class="tab-button" data-tab="doar-tab">Apoie o Projeto</button>
-        <button class="tab-button" data-tab="acessorios-tab">Acessórios</button>
-        <button class="tab-button" data-tab="produtos-tab">Produtos</button>
+      <button class="tab-button active" data-tab="planilha-tab">Planilha de Treino</button>
+      <button class="tab-button" data-tab="dicas-tab">Dicas de Treino</button>
+      <button class="tab-button" data-tab="doar-tab">Apoie o Projeto</button>
+      <button class="tab-button" data-tab="acessorios-tab">Acessórios</button>
+      <button class="tab-button" data-tab="produtos-tab">Produtos</button>
+      <button class="tab-button" data-tab="musculacao-tab">Musculação</button>
     </nav>
 
+    <!-- PLANILHA DE CORRIDA -->
     <section id="planilha-tab" class="tab-content active">
-        <section class="form-section">
-            <h2>Monte sua planilha</h2>
-            <form id="training-form">
-                <label for="distance">Distância alvo:</label>
-                <select id="distance" required>
-                    <option value="5">5 km</option>
-                    <option value="10">10 km</option>
-                    <option value="21">21 km</option>
-                    <option value="42">42 km</option>
-                </select>
+      <section class="form-section">
+        <h2>Monte sua planilha</h2>
+        <form id="training-form">
+          <label for="distance">Distância alvo:</label>
+          <select id="distance" required>
+            <option value="5">5 km</option>
+            <option value="10">10 km</option>
+            <option value="21">21 km</option>
+            <option value="42">42 km</option>
+          </select>
 
-                <label for="level">Nível:</label>
-                <select id="level" required>
-                    <option value="iniciante">Iniciante</option>
-                    <option value="intermediario">Intermediário</option>
-                    <option value="avancado">Avançado</option>
-                </select>
+          <label for="level">Nível:</label>
+          <select id="level" required>
+            <option value="iniciante">Iniciante</option>
+            <option value="intermediario">Intermediário</option>
+            <option value="avancado">Avançado</option>
+          </select>
 
-                <label for="days">Dias por semana:</label>
-                <select id="days" required>
-                    <option value="3">3 dias</option>
-                    <option value="4">4 dias</option>
-                    <option value="5">5 dias</option>
-                    <option value="6">6 dias</option>
-                </select>
+          <label for="days">Dias por semana:</label>
+          <select id="days" required>
+            <option value="3">3 dias</option>
+            <option value="4">4 dias</option>
+            <option value="5">5 dias</option>
+            <option value="6">6 dias</option>
+          </select>
 
-                <label for="semanas">Quantas semanas faltam para sua prova?</label>
-                <input type="number" id="semanas" min="1" max="24" required>
+          <label for="semanas">Quantas semanas faltam para sua prova?</label>
+          <input type="number" id="semanas" min="1" max="24" required>
 
-                <button type="submit">Gerar Planilha</button>
-            </form>
-        </section>
+          <button type="submit">Gerar Planilha</button>
+        </form>
+      </section>
 
-        <section class="result-section">
-            <h2>Sua Planilha</h2>
-            <div id="planilha"></div>
-            <button id="download-pdf" style="display:none;">Baixar PDF</button>
-        </section>
+      <section class="result-section">
+        <h2>Sua Planilha</h2>
+        <div id="planilha"></div>
+        <button id="download-pdf" style="display:none;">Baixar PDF</button>
+      </section>
     </section>
 
+    <!-- DICAS DE TREINO -->
     <section id="dicas-tab" class="tab-content">
-        <section class="result-section">
-            <h2>Dicas de Treino</h2>
-            <ul style="padding-left: 1rem; line-height: 1.8;">
-                <li><a href="https://www.youtube.com/watch?v=7Y9XPpbmn2E" target="_blank">✅ Drills para Corrida</a></li>
-                <li><a href="https://www.youtube.com/watch?v=8KlZ3ze5HIY" target="_blank">✅ Fartlek na Prática</a></li>
-                <li><a href="https://www.youtube.com/watch?v=1TFFULDQaUU" target="_blank">✅ Intervalado Corretamente</a></li>
-                <li><a href="https://www.youtube.com/watch?v=dOdDLstL__g" target="_blank">✅ Longão</a></li>
-                <li><a href="https://www.youtube.com/watch?v=EUve1lNtqOI" target="_blank">✅ Ritmo Controlado</a></li>
-                <li><a href="https://www.youtube.com/watch?v=gXGzHWnLjLM" target="_blank">✅ Corrida Regenerativa</a></li>
-            </ul>
-        </section>
+      <section class="result-section">
+        <h2>Dicas de Treino</h2>
+        <ul style="padding-left: 1rem; line-height: 1.8;">
+          <li><a href="https://www.youtube.com/watch?v=7Y9XPpbmn2E" target="_blank">✅ Drills para Corrida</a></li>
+          <li><a href="https://www.youtube.com/watch?v=8KlZ3ze5HIY" target="_blank">✅ Fartlek na Prática</a></li>
+          <li><a href="https://www.youtube.com/watch?v=1TFFULDQaUU" target="_blank">✅ Intervalado Corretamente</a></li>
+          <li><a href="https://www.youtube.com/watch?v=dOdDLstL__g" target="_blank">✅ Longão</a></li>
+          <li><a href="https://www.youtube.com/watch?v=EUve1lNtqOI" target="_blank">✅ Ritmo Controlado</a></li>
+          <li><a href="https://www.youtube.com/watch?v=gXGzHWnLjLM" target="_blank">✅ Corrida Regenerativa</a></li>
+        </ul>
+      </section>
     </section>
 
+    <!-- APOIO -->
     <section id="doar-tab" class="tab-content">
-        <section class="result-section">
-            <h2>Apoie este projeto</h2>
-            <p>Esse projeto foi criado com muito carinho para ajudar corredores de todo o Brasil.</p>
-            <p><strong>Chave PIX:</strong> 55073583/0001-72</p>
-            <img src="imagens/qrcode.jpg" alt="QR Code Pix">
-            <p style="margin-top: 1rem;">Sua doação ajuda Mario Farias a realizar a ultramaratona de 110km!</p>
-        </section>
+      <section class="result-section">
+        <h2>Apoie este projeto</h2>
+        <p>Esse projeto foi criado com muito carinho para ajudar corredores de todo o Brasil.</p>
+        <p><strong>Chave PIX:</strong> 55073583/0001-72</p>
+        <img src="imagem/QRCODE.jpg.jpg" alt="QR Code Pix">
+        <p style="margin-top: 1rem;">Sua doação ajuda Mario Farias a realizar a ultramaratona de 110km!</p>
+      </section>
     </section>
 
+    <!-- ACESSÓRIOS -->
     <section id="acessorios-tab" class="tab-content">
-        <section class="result-section">
-            <h2>Acessórios para Corrida</h2>
-            <div class="store-grid">
-                <div class="store-item">
-                    <h3>Meia de Compressão Arrow Muvin</h3>
-                    <p>Desenvolvida para proporcionar conforto e melhor desempenho.</p>
-                    <a href="https://amzn.to/43U23Ne" target="_blank">Ver produto</a>
-                </div>
-                <div class="store-item">
-                    <h3>Boné Five Panel Anth Co</h3>
-                    <p>Impermeável Aba Reta Original Strapback.</p>
-                    <a href="https://amzn.to/4klzbmZ" target="_blank">Ver produto</a>
-                </div>
-
-                <div class="store-item">
-                    <h3>Atlhetica Nutrition Go Energy Gel</h3>
-                    <p>Sabor Morango (10 sachês).</p>
-                    <a href="https://amzn.to/4dL6QnK" target="_blank">Ver produto</a>
-                </div>
-
-                <div class="store-item">
-                    <h3>Xiaomi Mi Band 8 Active</h3>
-                    <p>Versão Global.</p>
-                    <a href="https://amzn.to/44ZUllR" target="_blank">Ver produto</a>
-                </div>
-
-                <div class="store-item">
-                    <h3>Bermuda térmica</h3>
-                    <p>Com bolso porta celular confeccionada com microfibra de poliamida e elastano.</p>
-                    <a href="https://amzn.to/4mF2wtU" target="_blank">Ver produto</a>
-                </div>
-
-                <div class="store-item">
-                    <h3>Isotonic Drink, 900 gr</h3>
-                    <p>Facilita a reidratação durante ou após a prática de exercícios físicos.</p>
-                    <a href="https://amzn.to/4jutFND" target="_blank">Ver produto</a>
-                </div>
-
-                <div class="store-item">
-                    <h3>Nada pode me ferir - David Goggins</h3>
-                    <p>A história de superação do único homem a completar o treinamento das forças de elite e se tornar Navy SEAL, Army Ranger e TACP.</p>
-                    <a href="https://amzn.to/3Fp6uGx" target="_blank">Ver produto</a>
-                        </div>
-            </div>
-        </section>
+      <section class="result-section">
+        <h2>Acessórios para Corrida</h2>
+        <div class="store-grid">
+          <div class="store-item">
+            <h3>Meia de Compressão Arrow Muvin</h3>
+            <p>Desenvolvida para proporcionar conforto e melhor desempenho.</p>
+            <a href="https://amzn.to/43U23Ne" target="_blank">Ver produto</a>
+          </div>
+          <div class="store-item">
+            <h3>Boné Five Panel Anth Co</h3>
+            <p>Impermeável Aba Reta Original Strapback.</p>
+            <a href="https://amzn.to/4klzbmZ" target="_blank">Ver produto</a>
+          </div>
+          <div class="store-item">
+            <h3>Atlhetica Nutrition Go Energy Gel</h3>
+            <p>Sabor Morango (10 sachês).</p>
+            <a href="https://amzn.to/4dL6QnK" target="_blank">Ver produto</a>
+          </div>
+          <div class="store-item">
+            <h3>Xiaomi Mi Band 8 Active</h3>
+            <p>Versão Global.</p>
+            <a href="https://amzn.to/44ZUllR" target="_blank">Ver produto</a>
+          </div>
+        </div>
+      </section>
     </section>
 
+    <!-- PRODUTOS -->
     <section id="produtos-tab" class="tab-content">
-        <section class="result-section">
-            <h2>Produtos Premium</h2>
-            <div class="store-grid">
-                <div class="store-item">
-                    <h3>📘 E-book do Corredor</h3>
-                    <p>Dicas, planejamento e disciplina para iniciantes.</p>
-                    <a href="https://pay.kiwify.com.br/j7FULm2" target="_blank">Acessar</a>
-                </div>
-                <div class="store-item">
-                    <h3>🎯 Consultoria de Treino</h3>
-                    <p>Planos exclusivos e acompanhamento com Mario.</p>
-                    <a href="https://wa.me/55092984413665" target="_blank">Chamar no WhatsApp</a>
-                </div>
-            </div>
-        </section>
+      <section class="result-section">
+        <h2>Produtos Premium</h2>
+        <div class="store-grid">
+          <div class="store-item">
+            <h3>📘 E-book do Corredor</h3>
+            <p>Dicas, planejamento e disciplina para iniciantes.</p>
+            <a href="https://pay.kiwify.com.br/j7FULm2" target="_blank">Acessar</a>
+          </div>
+          <div class="store-item">
+            <h3>🎯 Consultoria de Treino</h3>
+            <p>Planos exclusivos e acompanhamento com Mario.</p>
+            <a href="https://wa.me/55092984413665" target="_blank">Chamar no WhatsApp</a>
+          </div>
+        </div>
+      </section>
     </section>
-</main>
 
-<footer>
+    <!-- FORMULÁRIO COMPLETO DE MUSCULAÇÃO -->
+<section id="musculacao-tab" class="tab-content">
+  <section class="form-section">
+    <h2>Montar Treino de Musculação Personalizado</h2>
+    <form id="musculacao-form">
+
+      <label for="objetivo">Objetivo principal:</label>
+      <select id="objetivo" required>
+        <option value="hipertrofia">Hipertrofia</option>
+        <option value="emagrecimento">Emagrecimento</option>
+        <option value="resistencia">Resistência para corrida</option>
+      </select>
+
+      <label for="nivel">Nível de experiência:</label>
+      <select id="nivel" required>
+        <option value="iniciante">Iniciante</option>
+        <option value="intermediario">Intermediário</option>
+        <option value="avancado">Avançado</option>
+      </select>
+
+      <label for="frequencia">Dias por semana:</label>
+      <select id="frequencia" required>
+        <option value="3">3x / semana</option>
+        <option value="4">4x / semana</option>
+        <option value="5">5x / semana</option>
+        <option value="6">6x / semana</option>
+      </select>
+
+      <label for="equipamentos">Equipamentos disponíveis:</label>
+      <select id="equipamentos" required>
+        <option value="academia">Academia completa</option>
+        <option value="casa">Halteres em casa</option>
+        <option value="elastico">Elásticos e peso corporal</option>
+        <option value="livre">Espaço aberto (parque, escadas)</option>
+      </select>
+
+      <label for="tempo">Tempo por sessão:</label>
+      <select id="tempo" required>
+        <option value="30">30 minutos</option>
+        <option value="45">45 minutos</option>
+        <option value="60">60 minutos ou mais</option>
+      </select>
+
+      <label for="divisao">Preferência de divisão:</label>
+      <select id="divisao" required>
+        <option value="abc">ABC tradicional</option>
+        <option value="fullbody">Full Body</option>
+        <option value="upperlower">Upper/Lower</option>
+        <option value="nenhuma">Sem preferência</option>
+      </select>
+
+      <fieldset>
+        <legend>Técnicas avançadas desejadas:</legend>
+        <label><input type="checkbox" name="tecnicas" value="dropset"> Drop set</label><br>
+        <label><input type="checkbox" name="tecnicas" value="biserie"> Bi-set / Tri-set</label><br>
+        <label><input type="checkbox" name="tecnicas" value="restpause"> Rest-pause</label><br>
+        <label><input type="checkbox" name="tecnicas" value="preexaustao"> Pré-exaustão</label><br>
+        <label><input type="checkbox" name="tecnicas" value="decidir" checked> Deixe o especialista decidir</label>
+      </fieldset>
+
+      <label for="lesoes">Lesões ou limitações:</label>
+      <textarea id="lesoes" rows="3" placeholder="Descreva se houver"></textarea>
+
+      <button type="submit">Gerar Treino</button>
+    </form>
+  </section>
+
+  <section class="result-section">
+    <h2>Seu Treino Personalizado</h2>
+    <div id="treino-musculacao"></div>
+    <button id="download-ficha" style="display:none;">Baixar Ficha</button>
+  </section>
+</section>
+
+  </main>
+
+  <footer>
     <p>Projeto com propósito: Me ajude a correr 110km!</p>
     <p><strong>PIX:</strong> CNPJ: 55073583/0001-72</p>
     <p style="margin-top: 1rem; font-size: 0.9rem; color: #ccc;">
-        © 2025 RunVision — Projeto criado por Mario Farias. Todos os direitos reservados.
+      © 2025 RunVision — Projeto criado por Mario Farias. Todos os direitos reservados.
     </p>
-</footer>
+  </footer>
 
-<a href="https://wa.me/55092984413665" class="whatsapp-button" target="_blank">
+  <a href="https://wa.me/55092984413665" class="whatsapp-button" target="_blank">
     Fale comigo no WhatsApp
-</a>
+  </a>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
