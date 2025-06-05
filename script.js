@@ -447,33 +447,38 @@ document.getElementById('musculacao-form')?.addEventListener('submit', function 
   const planos = treinoData[objetivo];
   if (!planos) return;
 
-  let resultado = `<div class="treino-container">
-    <h3 class="treino-titulo">${objetivo.charAt(0).toUpperCase() + objetivo.slice(1)} – ${frequencia} dias</h3>
+  let resultado = `
+    <div class="treino-container">
+      <h3 class="treino-titulo">${objetivo.charAt(0).toUpperCase() + objetivo.slice(1)} – ${frequencia} dias</h3>
   `;
 
   for (let i = 0; i < frequencia; i++) {
     const treino = planos[i % planos.length];
-    resultado += `<div class="treino-dia">
-      <h4 class="treino-dia-titulo">Dia ${i + 1}: ${treino.grupo}</h4>
-      <ul class="treino-lista">
-  `;
+    resultado += `
+      <div class="treino-dia">
+        <h4 class="treino-dia-titulo">Dia ${i + 1}: ${treino.grupo}</h4>
+        <ul class="treino-lista">
+    `;
 
     treino.exercicios.forEach(ex => {
-      resultado += `<li class="treino-item">
-        <p><strong class="treino-nome">${ex.nome}</strong> – ${ex.tecnica}</p>
-        <p class="treino-detalhe">Cadência: ${ex.cadencia} | Descanso: ${ex.descanso}</p>
-        <p class="treino-nota">Nota: ${ex.nota}</p>
-        <div><a href="${ex.video}" target="_blank" class="video-link">Ver demonstração</a></div>
-      </li>`;
+      resultado += `
+        <li class="treino-item">
+          <p><strong class="treino-nome">${ex.nome}</strong> – ${ex.tecnica}</p>
+          <p class="treino-detalhe">Cadência: ${ex.cadencia} | Descanso: ${ex.descanso}</p>
+          <p class="treino-nota">Nota: ${ex.nota}</p>
+          <div><a href="${ex.video}" target="_blank" class="video-link">Ver demonstração</a></div>
+        </li>
+      `;
     });
 
     resultado += `</ul></div>`;
   }
 
-  resultado += '</div>';
+  resultado += `</div>`;
   container.innerHTML = resultado;
   document.getElementById("download-ficha").style.display = "block";
 });
+
 
 
 document.getElementById("download-ficha")?.addEventListener("click", () => {
