@@ -411,51 +411,431 @@ document.getElementById("toggle-dark")?.addEventListener("click", () => {
 const treinoData = {
   hipertrofia: [
     {
-      grupo: "Peito + Tríceps",
+      grupo: "Peito e Tríceps",
       exercicios: [
-        { nome: "Supino Reto com Barra", tecnica: "Pirâmide Crescente", descanso: "60-90s", video: "https://www.youtube.com/watch?v=rT7DgCr-3pg", cadencia: "2-0-2", nota: "Concentre-se na fase excêntrica" },
-        { nome: "Cross Over", tecnica: "Rest-Pause", descanso: "45s", video: "https://www.youtube.com/watch?v=taI4XduLpTk", cadencia: "2-1-2", nota: "Use carga moderada" },
-        { nome: "Tríceps Corda", tecnica: "Drop Set", descanso: "30s", video: "https://www.youtube.com/watch?v=vB5OHsJ3EME", cadencia: "2-0-2", nota: "Evite balançar o corpo" }
+        {
+          nome: "Supino Reto",
+          tecnica: "Pirâmide",
+          cadencia: "2-0-2",
+          descanso: "90s",
+          nota: "Aumente a carga progressivamente a cada série.",
+          video: "https://www.youtube.com/watch?v=IODxDxX7oi4"
+        },
+        {
+          nome: "Supino Inclinado com Halteres",
+          tecnica: "Rest-pause",
+          cadencia: "2-1-2",
+          descanso: "60s",
+          nota: "Após a falha, pause 10s e tente mais 2-3 repetições.",
+          video: "https://www.youtube.com/watch?v=8iPEnn-ltC8"
+        },
+        {
+          nome: "Tríceps Testa",
+          tecnica: "Drop-set",
+          cadencia: "2-0-2",
+          descanso: "60s",
+          nota: "Reduza a carga e continue até a falha.",
+          video: "https://www.youtube.com/watch?v=YbX7Wd8jQ-Q"
+        }
       ]
     },
     {
-      grupo: "Costas + Bíceps",
+      grupo: "Costas e Bíceps",
       exercicios: [
-        { nome: "Puxada Alta", tecnica: "Pirâmide Crescente", descanso: "60s", video: "https://www.youtube.com/watch?v=CAwf7n6Luuc", cadencia: "2-0-2", nota: "Contraia bem as escápulas" },
-        { nome: "Remada Curvada", tecnica: "Drop Set", descanso: "60s", video: "https://www.youtube.com/watch?v=vT2GjY_Umpw", cadencia: "2-1-2", nota: "Postura firme durante toda execução" },
-        { nome: "Rosca Direta", tecnica: "Rest-Pause", descanso: "45s", video: "https://www.youtube.com/watch?v=kwG2ipFRgfo", cadencia: "2-0-2", nota: "Não balance o corpo" }
+        {
+          nome: "Puxada na Barra Fixa",
+          tecnica: "Pirâmide",
+          cadencia: "2-1-2",
+          descanso: "90s",
+          nota: "Controle a descida para maior recrutamento muscular.",
+          video: "https://www.youtube.com/watch?v=eGo4IYlbE5g"
+        },
+        {
+          nome: "Remada Curvada",
+          tecnica: "Rest-pause",
+          cadencia: "2-0-2",
+          descanso: "60s",
+          nota: "Pausa curta para máxima fadiga muscular.",
+          video: "https://www.youtube.com/watch?v=GZbfZ033f74"
+        },
+        {
+          nome: "Rosca Direta",
+          tecnica: "Drop-set",
+          cadencia: "2-0-2",
+          descanso: "60s",
+          nota: "Faça até a falha com redução de carga.",
+          video: "https://www.youtube.com/watch?v=kwG2ipFRgfo"
+        }
       ]
     },
     {
-      grupo: "Pernas + Abdômen",
+      grupo: "Pernas e Ombros",
       exercicios: [
-        { nome: "Agachamento Livre", tecnica: "Pirâmide", descanso: "90s", video: "https://www.youtube.com/watch?v=Dy28eq2PjcM", cadencia: "2-0-2", nota: "Mantenha o abdômen contraído" },
-        { nome: "Leg Press", tecnica: "Rest-Pause", descanso: "60s", video: "https://www.youtube.com/watch?v=IZxyjW7MPJQ", cadencia: "2-1-2", nota: "Evite estender completamente os joelhos" },
-        { nome: "Elevação de Pernas", tecnica: "3x15", descanso: "30s", video: "https://www.youtube.com/watch?v=JB2oyawG9KI", cadencia: "controlada", nota: "Foco total no abdômen" }
+        {
+          nome: "Agachamento Livre",
+          tecnica: "Pirâmide",
+          cadencia: "3-0-3",
+          descanso: "120s",
+          nota: "Mantenha a postura correta durante todo o movimento.",
+          video: "https://www.youtube.com/watch?v=Dy28eq2PjcM"
+        },
+        {
+          nome: "Elevação Lateral",
+          tecnica: "Rest-pause",
+          cadencia: "2-0-2",
+          descanso: "60s",
+          nota: "Pausa rápida para aumentar intensidade.",
+          video: "https://www.youtube.com/watch?v=3VcKaXpzqRo"
+        },
+        {
+          nome: "Leg Press",
+          tecnica: "Drop-set",
+          cadencia: "3-0-3",
+          descanso: "90s",
+          nota: "Reduza peso e continue até a falha muscular.",
+          video: "https://www.youtube.com/watch?v=IZxyjW7MPJQ"
+        }
+      ]
+    },
+    {
+      grupo: "Peito e Ombros",
+      exercicios: [
+        {
+          nome: "Crucifixo Inclinado",
+          tecnica: "Pirâmide",
+          cadencia: "2-1-2",
+          descanso: "75s",
+          nota: "Estique o músculo no alongamento para maior amplitude.",
+          video: "https://www.youtube.com/watch?v=eozdVDA78K0"
+        },
+        {
+          nome: "Desenvolvimento Militar",
+          tecnica: "Rest-pause",
+          cadencia: "2-0-2",
+          descanso: "60s",
+          nota: "Mantenha o core firme para proteger a lombar.",
+          video: "https://www.youtube.com/watch?v=B-aVuyhvLHU"
+        },
+        {
+          nome: "Tríceps Pulley",
+          tecnica: "Drop-set",
+          cadencia: "2-0-2",
+          descanso: "60s",
+          nota: "Controle a execução para evitar balanços.",
+          video: "https://www.youtube.com/watch?v=2-LAMcpzODU"
+        }
+      ]
+    },
+    {
+      grupo: "Costas e Bíceps",
+      exercicios: [
+        {
+          nome: "Remada Sentada",
+          tecnica: "Pirâmide",
+          cadencia: "2-0-2",
+          descanso: "90s",
+          nota: "Puxe com os cotovelos para maior ativação.",
+          video: "https://www.youtube.com/watch?v=GZbfZ033f74"
+        },
+        {
+          nome: "Rosca Martelo",
+          tecnica: "Rest-pause",
+          cadencia: "2-1-2",
+          descanso: "60s",
+          nota: "Fortalece antebraço e bíceps simultaneamente.",
+          video: "https://www.youtube.com/watch?v=zC3nLlEvin4"
+        },
+        {
+          nome: "Puxada Triângulo",
+          tecnica: "Drop-set",
+          cadencia: "2-0-2",
+          descanso: "60s",
+          nota: "Reduza peso para continuar após a falha.",
+          video: "https://www.youtube.com/watch?v=CAwf7n6Luuc"
+        }
+      ]
+    },
+    {
+      grupo: "Pernas e Abdômen",
+      exercicios: [
+        {
+          nome: "Cadeira Extensora",
+          tecnica: "Pirâmide",
+          cadencia: "3-0-3",
+          descanso: "90s",
+          nota: "Contraia forte na extensão do joelho.",
+          video: "https://www.youtube.com/watch?v=YyvSfVjQeL0"
+        },
+        {
+          nome: "Mesa Flexora",
+          tecnica: "Rest-pause",
+          cadencia: "2-0-2",
+          descanso: "60s",
+          nota: "Alongue bem a musculatura posterior.",
+          video: "https://www.youtube.com/watch?v=3i1I-csFCxc"
+        },
+        {
+          nome: "Abdominal Infra no Banco Inclinado",
+          tecnica: "Séries normais",
+          cadencia: "2-0-2",
+          descanso: "30s",
+          nota: "Controle o movimento para não usar impulso.",
+          video: "https://www.youtube.com/watch?v=K2VljzCC16g"
+        }
       ]
     }
   ],
+
   emagrecimento: [
     {
-      grupo: "Full Body HIIT",
+      grupo: "Treino Full Body – Circuito 1",
       exercicios: [
-        { nome: "Agachamento com Salto", tecnica: "20s ON / 10s OFF", descanso: "20s", video: "https://www.youtube.com/watch?v=Ut0bVKwkgOs", cadencia: "explosiva", nota: "Mantenha postura" },
-        { nome: "Burpee", tecnica: "Tabata", descanso: "10s", video: "https://www.youtube.com/watch?v=TU8QYVW0gDU", cadencia: "explosiva", nota: "Pouse suave" },
-        { nome: "Mountain Climber", tecnica: "30s", descanso: "15s", video: "https://www.youtube.com/watch?v=nmwgirgXLYM", cadencia: "rápida", nota: "Estabilize o core" }
+        {
+          nome: "Agachamento com Salto",
+          tecnica: "Circuito",
+          cadencia: "Explosiva",
+          descanso: "30s entre estações",
+          nota: "Movimento dinâmico para alta queima calórica.",
+          video: "https://www.youtube.com/watch?v=U4s4mEQ5VqU"
+        },
+        {
+          nome: "Flexão de Braço",
+          tecnica: "Bi-set com Prancha",
+          cadencia: "2-0-2",
+          descanso: "30s entre estações",
+          nota: "Mantenha o corpo alinhado durante a execução.",
+          video: "https://www.youtube.com/watch?v=_l3ySVKYVJ8"
+        },
+        {
+          nome: "Burpee",
+          tecnica: "Circuito",
+          cadencia: "Explosiva",
+          descanso: "30s entre estações",
+          nota: "Alta intensidade para maximizar o gasto energético.",
+          video: "https://www.youtube.com/watch?v=TU8QYVW0gDU"
+        },
+        {
+          nome: "Prancha",
+          tecnica: "Bi-set com Flexão",
+          cadencia: "Isometria",
+          descanso: "30s entre estações",
+          nota: "Fortalece core e melhora estabilidade.",
+          video: "https://www.youtube.com/watch?v=pSHjTRCQxIw"
+        }
+      ]
+    },
+    {
+      grupo: "Treino Full Body – Circuito 2",
+      exercicios: [
+        {
+          nome: "Avanço Alternado",
+          tecnica: "Circuito",
+          cadencia: "2-0-2",
+          descanso: "30s entre estações",
+          nota: "Foco em membros inferiores com explosão.",
+          video: "https://www.youtube.com/watch?v=QOVaHwm-Q6U"
+        },
+        {
+          nome: "Remada Unilateral com Halteres",
+          tecnica: "Bi-set com Abdominal",
+          cadencia: "2-0-2",
+          descanso: "30s entre estações",
+          nota: "Trabalha costas e core simultaneamente.",
+          video: "https://www.youtube.com/watch?v=pYcpY20QaE8"
+        },
+        {
+          nome: "Mountain Climbers",
+          tecnica: "Circuito",
+          cadencia: "Explosiva",
+          descanso: "30s entre estações",
+          nota: "Excelente para condicionamento cardiovascular.",
+          video: "https://www.youtube.com/watch?v=nmwgirgXLYM"
+        },
+        {
+          nome: "Abdominal Crunch",
+          tecnica: "Bi-set com Remada",
+          cadencia: "2-0-2",
+          descanso: "30s entre estações",
+          nota: "Contração abdominal máxima.",
+          video: "https://www.youtube.com/watch?v=Xyd_fa5zoEU"
+        }
+      ]
+    },
+    {
+      grupo: "Treino Full Body – Circuito 3",
+      exercicios: [
+        {
+          nome: "Pular Corda",
+          tecnica: "Circuito",
+          cadencia: "Ritmo constante",
+          descanso: "30s entre estações",
+          nota: "Excelente para coordenação e gasto calórico.",
+          video: "https://www.youtube.com/watch?v=0tLF9reDB2Q"
+        },
+        {
+          nome: "Flexão Diamante",
+          tecnica: "Bi-set com Prancha Lateral",
+          cadencia: "2-0-2",
+          descanso: "30s entre estações",
+          nota: "Foco em tríceps e core.",
+          video: "https://www.youtube.com/watch?v=J0DnG1_S92I"
+        },
+        {
+          nome: "Agachamento Isométrico",
+          tecnica: "Circuito",
+          cadencia: "Isometria 30-60s",
+          descanso: "30s entre estações",
+          nota: "Estabiliza os membros inferiores.",
+          video: "https://www.youtube.com/watch?v=qr7F__q3D1Q"
+        },
+        {
+          nome: "Elevação de Quadril",
+          tecnica: "Bi-set com Agachamento",
+          cadencia: "2-0-2",
+          descanso: "30s entre estações",
+          nota: "Fortalece glúteos e lombar.",
+          video: "https://www.youtube.com/watch?v=LM8XHLYJoYs"
+        }
       ]
     }
   ],
-  resistencia: [
+
+  fortalecimento: [
     {
-      grupo: "Funcional Corrida",
+      grupo: "Resistência para Corrida – Parte 1",
       exercicios: [
-        { nome: "Afundo com Passada", tecnica: "3x12 por perna", descanso: "45s", video: "https://www.youtube.com/watch?v=QOVaHwm-Q6U", cadencia: "2-0-2", nota: "Evite projetar joelho à frente" },
-        { nome: "Prancha", tecnica: "3x30s", descanso: "30s", video: "https://www.youtube.com/watch?v=pSHjTRCQxIw", cadencia: "estática", nota: "Ative o core" },
-        { nome: "Stiff com Halteres", tecnica: "3x12", descanso: "60s", video: "https://www.youtube.com/watch?v=DFzHqeP1a8E", cadencia: "2-1-2", nota: "Alongue bem os posteriores" }
+        {
+          nome: "Agachamento Isométrico",
+          tecnica: "Isometria",
+          cadencia: "Fixo 30-60s",
+          descanso: "60s",
+          nota: "Melhora força estática das pernas.",
+          video: "https://www.youtube.com/watch?v=qr7F__q3D1Q"
+        },
+        {
+          nome: "Elevação de Quadril (Glúteo)",
+          tecnica: "Séries normais",
+          cadencia: "2-1-2",
+          descanso: "45s",
+          nota: "Fortalece glúteos e lombar, fundamental para corrida.",
+          video: "https://www.youtube.com/watch?v=LM8XHLYJoYs"
+        },
+        {
+          nome: "Prancha Frontal",
+          tecnica: "Isometria",
+          cadencia: "Fixo 30-45s",
+          descanso: "45s",
+          nota: "Melhora estabilidade do core.",
+          video: "https://www.youtube.com/watch?v=pSHjTRCQxIw"
+        },
+        {
+          nome: "Step-up com Halteres",
+          tecnica: "Séries normais",
+          cadencia: "2-0-2",
+          descanso: "60s",
+          nota: "Simula movimento de subida, importante para força funcional.",
+          video: "https://www.youtube.com/watch?v=dQqApCGd5Ss"
+        }
+      ]
+    },
+    {
+      grupo: "Resistência para Corrida – Parte 2",
+      exercicios: [
+        {
+          nome: "Agachamento Unilateral (Pistol)",
+          tecnica: "Séries normais",
+          cadencia: "2-1-2",
+          descanso: "60s",
+          nota: "Trabalha equilíbrio e força unilateral.",
+          video: "https://www.youtube.com/watch?v=3Ctjr_LY1no"
+        },
+        {
+          nome: "Abdominal Prancha Lateral",
+          tecnica: "Isometria",
+          cadencia: "Fixo 30-45s",
+          descanso: "45s",
+          nota: "Fortalece core e estabiliza coluna.",
+          video: "https://www.youtube.com/watch?v=K2VljzCC16g"
+        },
+        {
+          nome: "Elevação de Panturrilha",
+          tecnica: "Pirâmide",
+          cadencia: "2-0-2",
+          descanso: "30s",
+          nota: "Foco na resistência da panturrilha.",
+          video: "https://www.youtube.com/watch?v=-M4-G8p8fmc"
+        },
+        {
+          nome: "Superman",
+          tecnica: "Isometria",
+          cadencia: "Fixo 30s",
+          descanso: "30s",
+          nota: "Fortalece lombar e melhora postura.",
+          video: "https://www.youtube.com/watch?v=cc6UVRS7PW4"
+        }
+      ]
+    },
+    {
+      grupo: "Resistência para Corrida – Parte 3",
+      exercicios: [
+        {
+          nome: "Prancha com Elevação Alternada de Braço",
+          tecnica: "Isometria com movimento",
+          cadencia: "10 repetições",
+          descanso: "45s",
+          nota: "Desafia estabilidade do core e ombros.",
+          video: "https://www.youtube.com/watch?v=Qw7lQ9jDYwM"
+        },
+        {
+          nome: "Avanço com Rotação de Tronco",
+          tecnica: "Séries normais",
+          cadencia: "2-0-2",
+          descanso: "60s",
+          nota: "Melhora mobilidade e força funcional.",
+          video: "https://www.youtube.com/watch?v=QOVaHwm-Q6U"
+        },
+        {
+          nome: "Ponte Unilateral",
+          tecnica: "Séries normais",
+          cadencia: "2-0-2",
+          descanso: "45s",
+          nota: "Foco no fortalecimento do glúteo e estabilidade.",
+          video: "https://www.youtube.com/watch?v=4WwBZmOmYs4"
+        }
+      ]
+    },
+    {
+      grupo: "Resistência para Corrida – Parte 4",
+      exercicios: [
+        {
+          nome: "Agachamento com Halteres",
+          tecnica: "Pirâmide",
+          cadencia: "3-0-3",
+          descanso: "90s",
+          nota: "Treina força para suportar impacto da corrida.",
+          video: "https://www.youtube.com/watch?v=Dy28eq2PjcM"
+        },
+        {
+          nome: "Elevação Lateral com Halteres",
+          tecnica: "Rest-pause",
+          cadencia: "2-0-2",
+          descanso: "60s",
+          nota: "Fortalece ombros e previne lesões.",
+          video: "https://www.youtube.com/watch?v=3VcKaXpzqRo"
+        },
+        {
+          nome: "Abdominal Infra",
+          tecnica: "Séries normais",
+          cadencia: "2-0-2",
+          descanso: "30s",
+          nota: "Importante para controle postural na corrida.",
+          video: "https://www.youtube.com/watch?v=K2VljzCC16g"
+        }
       ]
     }
   ]
 };
+
 
 // === MELHORIA VISUAL: CENTRALIZADO E RESPONSIVO COM CLASSES CSS ===
 document.getElementById('form-musculacao')?.addEventListener('submit', function (e) {
@@ -502,7 +882,6 @@ document.getElementById('form-musculacao')?.addEventListener('submit', function 
 
   resultado += `
     <button id="voltar-editar" class="btn-secundario">Voltar e Editar</button>
-    <a id="gerar-video" class="btn-secundario" href="https://runvision.com.br/videos/${nomeAluno.toLowerCase().replace(/ /g, '-')}-${objetivo}.mp4" target="_blank">Ver Vídeo Explicativo</a>
   </div>`;
 
   container.innerHTML = resultado;
