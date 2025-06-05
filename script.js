@@ -402,7 +402,12 @@ document.querySelectorAll('.tab-button').forEach(button => {
   });
 });
 
-// Treino de Musculação Dinâmico
+// Dark Mode Toggle
+document.getElementById("toggle-dark")?.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+});
+
+// Dados de treino
 const treinoData = {
   hipertrofia: [
     {
@@ -411,6 +416,22 @@ const treinoData = {
         { nome: "Supino Reto com Barra", tecnica: "Pirâmide Crescente", descanso: "60-90s", video: "https://www.youtube.com/watch?v=rT7DgCr-3pg", cadencia: "2-0-2", nota: "Concentre-se na fase excêntrica" },
         { nome: "Cross Over", tecnica: "Rest-Pause", descanso: "45s", video: "https://www.youtube.com/watch?v=taI4XduLpTk", cadencia: "2-1-2", nota: "Use carga moderada" },
         { nome: "Tríceps Corda", tecnica: "Drop Set", descanso: "30s", video: "https://www.youtube.com/watch?v=vB5OHsJ3EME", cadencia: "2-0-2", nota: "Evite balançar o corpo" }
+      ]
+    },
+    {
+      grupo: "Costas + Bíceps",
+      exercicios: [
+        { nome: "Puxada Alta", tecnica: "Pirâmide Crescente", descanso: "60s", video: "https://www.youtube.com/watch?v=CAwf7n6Luuc", cadencia: "2-0-2", nota: "Contraia bem as escápulas" },
+        { nome: "Remada Curvada", tecnica: "Drop Set", descanso: "60s", video: "https://www.youtube.com/watch?v=vT2GjY_Umpw", cadencia: "2-1-2", nota: "Postura firme durante toda execução" },
+        { nome: "Rosca Direta", tecnica: "Rest-Pause", descanso: "45s", video: "https://www.youtube.com/watch?v=kwG2ipFRgfo", cadencia: "2-0-2", nota: "Não balance o corpo" }
+      ]
+    },
+    {
+      grupo: "Pernas + Abdômen",
+      exercicios: [
+        { nome: "Agachamento Livre", tecnica: "Pirâmide", descanso: "90s", video: "https://www.youtube.com/watch?v=Dy28eq2PjcM", cadencia: "2-0-2", nota: "Mantenha o abdômen contraído" },
+        { nome: "Leg Press", tecnica: "Rest-Pause", descanso: "60s", video: "https://www.youtube.com/watch?v=IZxyjW7MPJQ", cadencia: "2-1-2", nota: "Evite estender completamente os joelhos" },
+        { nome: "Elevação de Pernas", tecnica: "3x15", descanso: "30s", video: "https://www.youtube.com/watch?v=JB2oyawG9KI", cadencia: "controlada", nota: "Foco total no abdômen" }
       ]
     }
   ],
@@ -437,19 +458,24 @@ const treinoData = {
 };
 
 // === MELHORIA VISUAL: CENTRALIZADO E RESPONSIVO COM CLASSES CSS ===
-document.getElementById('musculacao-form')?.addEventListener('submit', function (e) {
+document.getElementById('form-musculacao')?.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const objetivo = document.getElementById('objetivo').value;
-  const frequencia = parseInt(document.getElementById('frequencia').value);
+  // Pegando dados do formulário
+  const nomeAluno = this.nome.value.trim();
+  const objetivo = this.objetivo.value;
+  const frequencia = parseInt(this.dias.value);
   const container = document.getElementById('treino-musculacao');
 
+  // Buscar planos de treino para o objetivo
   const planos = treinoData[objetivo];
   if (!planos) return;
 
+  // Montar resultado HTML
   let resultado = `
     <div class="treino-container">
       <h3 class="treino-titulo">${objetivo.charAt(0).toUpperCase() + objetivo.slice(1)} – ${frequencia} dias</h3>
+      <p class="aluno-nome"><strong>Aluno:</strong> ${nomeAluno}</p>
   `;
 
   for (let i = 0; i < frequencia; i++) {
@@ -474,49 +500,61 @@ document.getElementById('musculacao-form')?.addEventListener('submit', function 
     resultado += `</ul></div>`;
   }
 
-  resultado += `</div>`;
+  resultado += `
+    <button id="voltar-editar" class="btn-secundario">Voltar e Editar</button>
+    <a id="gerar-video" class="btn-secundario" href="https://runvision.com.br/videos/${nomeAluno.toLowerCase().replace(/ /g, '-')}-${objetivo}.mp4" target="_blank">Ver Vídeo Explicativo</a>
+  </div>`;
+
   container.innerHTML = resultado;
+
+  // Mostrar botão para baixar ficha PDF
   document.getElementById("download-ficha").style.display = "block";
+
+  // Evento para voltar e editar (scroll até o formulário)
+  document.getElementById("voltar-editar").addEventListener("click", () => {
+    document.getElementById("form-musculacao").scrollIntoView({ behavior: "smooth" });
+  });
 });
 
-
-
+// Geração do PDF da ficha de musculação
 document.getElementById("download-ficha")?.addEventListener("click", () => {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
 
   const treinoEl = document.getElementById("treino-musculacao");
   const titulo = treinoEl.querySelector(".treino-titulo")?.innerText || "Ficha de Treino";
+  const aluno = treinoEl.querySelector(".aluno-nome")?.innerText || "";
 
   let y = 20;
 
   // Cabeçalho
-  doc.setFont("helvetica", "normal", "latin1"); // usa charset compatível com português
+  doc.setFont("helvetica", "normal");
   doc.setFontSize(16);
   doc.text("Ficha de Treino de Musculação – RunVision", 105, y, { align: "center" });
   y += 10;
 
   doc.setFontSize(13);
   doc.text(titulo, 105, y, { align: "center" });
-  y += 12;
+  y += 8;
 
-  // Introdução: Técnicas e Cadência
+  doc.setFontSize(12);
+  doc.text(aluno, 15, y);
+  y += 10;
+
+  // Explicações técnicas
   const explicacoes = [
     "Técnicas Utilizadas:",
     "• Drop-set: Após a falha, reduza o peso e continue o exercício sem descanso.",
-    "• Rest-pause: Realize uma série até a falha, descanse de 10-15s, e repita com a mesma carga.",
-    "• Bi-set / Tri-set: Dois ou três exercícios seguidos para o mesmo grupo muscular, sem descanso entre eles.",
-    "• Pré-exaustão: Exercício isolado antes do composto para fadigar o músculo-alvo.",
+    "• Rest-pause: Série até a falha, pausa de 10-15s, repetir.",
+    "• Pirâmide: Aumenta ou reduz carga a cada série.",
     "",
     "Cadência (ritmo de execução):",
-    "• 2-0-2: 2s na descida, sem pausa, 2s na subida.",
-    "• 2-1-2: 2s na descida, 1s em isometria, 2s na subida.",
-    "• Explosiva: Máxima velocidade na subida com controle na descida.",
-    "• Estática: Isometria – manter a posição sem movimentar.",
+    "• 2-0-2: 2s descida, 0s pausa, 2s subida.",
+    "• 2-1-2: 2s descida, 1s isometria, 2s subida.",
+    "• Explosiva: Subida rápida, descida controlada.",
     ""
   ];
 
-  doc.setFont("helvetica", "normal");
   doc.setFontSize(10);
   explicacoes.forEach(linha => {
     const linhas = doc.splitTextToSize(linha, 180);
@@ -526,11 +564,14 @@ document.getElementById("download-ficha")?.addEventListener("click", () => {
 
   y += 5;
 
-  // Listagem de treinos
+  // Listar dias e exercícios
   const dias = treinoEl.querySelectorAll(".treino-dia");
-
   dias.forEach((dia) => {
     if (y > 250) { doc.addPage(); y = 20; }
+
+    // Divisor visual
+    doc.setDrawColor(200);
+    doc.line(15, y - 2, 195, y - 2);
 
     const tituloDia = dia.querySelector("h4")?.innerText || "";
     doc.setFont("helvetica", "bold");
