@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="RunVision: Planilhas de corrida, treinos de musculação e dicas para corredores.">
   <title>RunVision - Planilhas de Corrida</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -85,7 +86,7 @@
         <h2>Apoie este projeto</h2>
         <p>Esse projeto foi criado com muito carinho para ajudar corredores de todo o Brasil.</p>
         <p><strong>Chave PIX:</strong> 55073583/0001-72</p>
-        <img src="imagem/QRCODE.jpg.jpg" alt="QR Code Pix">
+        <img src="imagem/QRCODE.jpg" alt="QR Code Pix">
         <p style="margin-top: 1rem;">Sua doação ajuda Mario Farias a realizar a ultramaratona de 110km!</p>
       </section>
     </section>
@@ -138,46 +139,46 @@
       </section>
     </section>
 
-    <!-- FORMULÁRIO COMPLETO DE MUSCULAÇÃO -->
-<form id="form-musculacao">
-  <label>Nome completo:</label>
-  <input type="text" name="nome" required />
+    <!-- MUSCULAÇÃO -->
+    <section id="musculacao-tab" class="tab-content">
+      <form id="form-musculacao">
+        <label>Nome completo:</label>
+        <input type="text" name="nome" required />
 
-  <label>Nível do aluno:</label>
-  <select name="nivel" required>
-    <option value="iniciante">Iniciante</option>
-    <option value="intermediario">Intermediário</option>
-    <option value="avancado">Avançado</option>
-  </select>
+        <label>Nível do aluno:</label>
+        <select name="nivel" required>
+          <option value="iniciante">Iniciante</option>
+          <option value="intermediario">Intermediário</option>
+          <option value="avancado">Avançado</option>
+        </select>
 
-  <label>Objetivo principal:</label>
-  <select name="objetivo" required>
-    <option value="hipertrofia">Hipertrofia</option>
-    <option value="emagrecimento">Emagrecimento / Definição</option>
-    <option value="fortalecimento">Fortalecimento para Corrida</option>
-  </select>
+        <label>Objetivo principal:</label>
+        <select name="objetivo" required>
+          <option value="hipertrofia">Hipertrofia</option>
+          <option value="emagrecimento">Emagrecimento / Definição</option>
+          <option value="fortalecimento">Fortalecimento para Corrida</option>
+        </select>
 
-  <label>Quantos dias por semana você treina?</label>
-  <select name="dias" required>
-    <option value="2">2x por semana</option>
-    <option value="3">3x por semana</option>
-    <option value="4">4x por semana</option>
-    <option value="5">5x por semana</option>
-    <option value="6">6x por semana</option>
-  </select>
+        <label>Quantos dias por semana você treina?</label>
+        <select name="dias" required>
+          <option value="2">2x por semana</option>
+          <option value="3">3x por semana</option>
+          <option value="4">4x por semana</option>
+          <option value="5">5x por semana</option>
+          <option value="6">6x por semana</option>
+        </select>
 
-  <button type="submit">Gerar treino</button>
-</form>
-    <pre id="prompt-output"></pre> <!-- Só para exibir no navegador -->
-  </section>
+        <button type="submit">Gerar treino</button>
+      </form>
 
-  <section class="result-section">
-    <h2>Seu Treino Personalizado</h2>
-    <div id="treino-musculacao"></div>
-    <button id="download-ficha" style="display:none;">Baixar Ficha</button>
-  </section>
-</section>
+      <pre id="prompt-output"></pre>
 
+      <section class="result-section">
+        <h2>Seu Treino Personalizado</h2>
+        <div id="treino-musculacao"></div>
+        <button id="download-ficha" style="display:none;">Baixar Ficha</button>
+      </section>
+    </section>
   </main>
 
   <footer>
