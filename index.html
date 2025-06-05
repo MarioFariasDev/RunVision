@@ -139,70 +139,36 @@
     </section>
 
     <!-- FORMULÁRIO COMPLETO DE MUSCULAÇÃO -->
-<section id="musculacao-tab" class="tab-content">
-  <section class="form-section">
-    <h2>Montar Treino de Musculação Personalizado</h2>
-    <form id="musculacao-form">
+<form id="form-musculacao">
+  <label>Nome completo:</label>
+  <input type="text" name="nome" required />
 
-      <label for="objetivo">Objetivo principal:</label>
-      <select id="objetivo" required>
-        <option value="hipertrofia">Hipertrofia</option>
-        <option value="emagrecimento">Emagrecimento</option>
-        <option value="resistencia">Resistência para corrida</option>
-      </select>
+  <label>Nível do aluno:</label>
+  <select name="nivel" required>
+    <option value="iniciante">Iniciante</option>
+    <option value="intermediario">Intermediário</option>
+    <option value="avancado">Avançado</option>
+  </select>
 
-      <label for="nivel">Nível de experiência:</label>
-      <select id="nivel" required>
-        <option value="iniciante">Iniciante</option>
-        <option value="intermediario">Intermediário</option>
-        <option value="avancado">Avançado</option>
-      </select>
+  <label>Objetivo principal:</label>
+  <select name="objetivo" required>
+    <option value="hipertrofia">Hipertrofia</option>
+    <option value="emagrecimento">Emagrecimento / Definição</option>
+    <option value="fortalecimento">Fortalecimento para Corrida</option>
+  </select>
 
-      <label for="frequencia">Dias por semana:</label>
-      <select id="frequencia" required>
-        <option value="3">3x / semana</option>
-        <option value="4">4x / semana</option>
-        <option value="5">5x / semana</option>
-        <option value="6">6x / semana</option>
-      </select>
+  <label>Quantos dias por semana você treina?</label>
+  <select name="dias" required>
+    <option value="2">2x por semana</option>
+    <option value="3">3x por semana</option>
+    <option value="4">4x por semana</option>
+    <option value="5">5x por semana</option>
+    <option value="6">6x por semana</option>
+  </select>
 
-      <label for="equipamentos">Equipamentos disponíveis:</label>
-      <select id="equipamentos" required>
-        <option value="academia">Academia completa</option>
-        <option value="casa">Halteres em casa</option>
-        <option value="elastico">Elásticos e peso corporal</option>
-        <option value="livre">Espaço aberto (parque, escadas)</option>
-      </select>
-
-      <label for="tempo">Tempo por sessão:</label>
-      <select id="tempo" required>
-        <option value="30">30 minutos</option>
-        <option value="45">45 minutos</option>
-        <option value="60">60 minutos ou mais</option>
-      </select>
-
-      <label for="divisao">Preferência de divisão:</label>
-      <select id="divisao" required>
-        <option value="abc">ABC tradicional</option>
-        <option value="fullbody">Full Body</option>
-        <option value="upperlower">Upper/Lower</option>
-        <option value="nenhuma">Sem preferência</option>
-      </select>
-
-      <fieldset>
-        <legend>Técnicas avançadas desejadas:</legend>
-        <label><input type="checkbox" name="tecnicas" value="dropset"> Drop set</label><br>
-        <label><input type="checkbox" name="tecnicas" value="biserie"> Bi-set / Tri-set</label><br>
-        <label><input type="checkbox" name="tecnicas" value="restpause"> Rest-pause</label><br>
-        <label><input type="checkbox" name="tecnicas" value="preexaustao"> Pré-exaustão</label><br>
-        <label><input type="checkbox" name="tecnicas" value="decidir" checked> Deixe o especialista decidir</label>
-      </fieldset>
-
-      <label for="lesoes">Lesões ou limitações:</label>
-      <textarea id="lesoes" rows="3" placeholder="Descreva se houver"></textarea>
-
-      <button type="submit">Gerar Treino</button>
-    </form>
+  <button type="submit">Gerar treino</button>
+</form>
+    <pre id="prompt-output"></pre> <!-- Só para exibir no navegador -->
   </section>
 
   <section class="result-section">
