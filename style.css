@@ -10,6 +10,7 @@ body {
     color: #f3f4f6;
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* HEADER */
@@ -18,12 +19,19 @@ header {
     text-align: center;
     padding: 2rem 1rem;
     border-bottom: 1px solid #1f2937;
+    animation: fadeInDown 0.8s ease forwards;
 }
 header h1 {
     color: #f97316;
+    font-weight: 700;
+    font-size: 2.5rem;
+    animation: slideInLeft 0.8s ease forwards;
 }
 header p {
     color: #cbd5e1;
+    margin-top: 0.5rem;
+    font-size: 1.15rem;
+    animation: slideInRight 0.8s ease forwards;
 }
 
 /* NAV */
@@ -33,6 +41,7 @@ header p {
     background: #111827;
     padding: 1rem;
     gap: 1rem;
+    animation: fadeInUp 0.8s ease forwards;
 }
 button,
 .tab-button,
@@ -43,16 +52,24 @@ a.button {
     padding: 0.75rem 1.25rem;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(249, 115, 22, 0.4);
 }
 button:hover,
-.tab-button:hover {
+.tab-button:hover,
+a.button:hover {
     background-color: #ea580c;
-    transform: scale(1.03);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(234, 88, 12, 0.6);
 }
+
+/* TAB CONTENT */
 .tab-content {
     display: none;
     padding: 2rem 1rem;
+    animation: fadeIn 0.6s ease forwards;
 }
 .tab-content.active {
     display: block;
@@ -65,12 +82,13 @@ button:hover,
     background-color: #1f2937;
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 0.8s ease forwards;
 }
 form label {
     display: block;
     margin-top: 1rem;
-    font-weight: bold;
+    font-weight: 700;
     color: #f3f4f6;
 }
 form select,
@@ -84,13 +102,25 @@ form button {
     font-size: 1rem;
     background-color: #0d1117;
     color: #f3f4f6;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+form select:focus,
+form input:focus {
+    outline: none;
+    border-color: #f97316;
+    box-shadow: 0 0 8px #f97316aa;
 }
 form button {
     background-color: #f97316;
-    font-weight: bold;
+    font-weight: 700;
+    margin-top: 1.25rem;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(249, 115, 22, 0.5);
 }
 form button:hover {
     background-color: #ea580c;
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(234, 88, 12, 0.7);
 }
 
 /* RESULTADO */
@@ -100,11 +130,13 @@ form button:hover {
     background: #1f2937;
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 0.8s ease forwards;
 }
 .result-section h2 {
     margin-bottom: 1rem;
     color: #f97316;
+    font-weight: 700;
 }
 
 /* BLOCO SEMANAL */
@@ -114,9 +146,12 @@ form button:hover {
     border-left: 6px solid #f97316;
     background-color: #111827;
     border-radius: 8px;
+    animation: slideInLeft 0.5s ease forwards;
 }
 .semana h3 {
     margin-bottom: 0.25rem;
+    font-weight: 600;
+    color: #f97316;
 }
 .semana p {
     font-size: 0.95rem;
@@ -138,8 +173,12 @@ form button:hover {
     border-radius: 6px;
     padding: 0.75rem;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     color: #f3f4f6;
+}
+#planilha details:hover {
+    background-color: #1e293b;
+    border-color: #f97316;
 }
 #planilha summary {
     font-weight: 600;
@@ -162,12 +201,16 @@ form button:hover {
     border: none;
     color: white;
     padding: 0.75rem 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
     border-radius: 8px;
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(22, 163, 74, 0.6);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 #download-pdf:hover {
     background-color: #15803d;
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(21, 128, 61, 0.8);
 }
 
 /* FOOTER */
@@ -177,6 +220,7 @@ footer {
     text-align: center;
     color: #cbd5e1;
     border-top: 1px solid #334155;
+    animation: fadeInUp 1s ease forwards;
 }
 footer img {
     margin-top: 1rem;
@@ -193,12 +237,13 @@ footer img {
     padding: 0.75rem 1.5rem;
     border-radius: 50px;
     text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .whatsapp-button:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.9);
 }
 
 /* LOJA E DOAÇÕES */
@@ -212,15 +257,17 @@ footer img {
     background: #111827;
     border-radius: 10px;
     padding: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     text-align: center;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 .store-item:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
 }
 .store-item h3 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 0.5rem;
     color: #f97316;
 }
@@ -233,10 +280,11 @@ footer img {
     display: inline-block;
     background: #0ea5e9;
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.1rem;
     border-radius: 6px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
 }
 .store-item a:hover {
     background: #0284c7;
@@ -250,78 +298,72 @@ h1, h2, h3 {
 /* ANIMAÇÕES */
 button,
 a.button {
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 button:hover,
 a.button:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
+/* ABA DOAÇÃO */
 #doar-tab .result-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
+
 /* RESPONSIVO - MOBILE FIRST */
 @media (max-width: 768px) {
     header h1 {
         font-size: 1.8rem;
     }
-
     header p {
         font-size: 1rem;
     }
-
     .tab-nav {
         flex-direction: column;
         align-items: center;
         gap: 0.5rem;
     }
-
     .form-section,
     .result-section {
         padding: 1rem;
         margin: 1rem;
     }
-
     form select,
     form input,
     form button {
         font-size: 0.95rem;
         padding: 0.6rem;
     }
-
     .semana {
         padding: 1rem;
         font-size: 0.95rem;
     }
-
     #planilha details summary {
         font-size: 0.95rem;
     }
-
     .store-grid {
         grid-template-columns: 1fr;
     }
-
     .whatsapp-button {
         right: 10px;
         bottom: 10px;
         padding: 0.6rem 1rem;
         font-size: 0.9rem;
     }
-
     footer {
         font-size: 0.9rem;
         padding: 1.5rem 1rem;
     }
-
     #download-pdf {
         width: 100%;
         padding: 0.75rem;
     }
 }
+
+/* LINKS DE VÍDEO */
 .video-link {
     display: inline-block;
     background-color: #0ea5e9;
@@ -330,12 +372,15 @@ a.button:hover {
     margin-top: 0.5rem;
     border-radius: 6px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .video-link:hover {
     background-color: #0284c7;
+    transform: scale(1.05);
 }
 
+/* ALERTAS */
 .alerta {
     text-align: center;
     color: #facc15;
@@ -343,8 +388,10 @@ a.button:hover {
     padding: 1rem;
     border-radius: 8px;
     margin-top: 1rem;
+    animation: pulse 2s infinite ease-in-out;
 }
 
+/* CONTAINERS DE TREINO */
 .treino-container {
     display: flex;
     flex-direction: column;
@@ -352,12 +399,15 @@ a.button:hover {
     width: 100%;
     padding: 1rem;
     box-sizing: border-box;
+    animation: fadeIn 1s ease forwards;
 }
 
 .treino-titulo {
     color: #f97316;
     margin-bottom: 1.5rem;
     text-align: center;
+    font-weight: 700;
+    font-size: 1.8rem;
 }
 
 .treino-dia {
@@ -369,12 +419,19 @@ a.button:hover {
     width: 100%;
     max-width: 700px;
     box-sizing: border-box;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.treino-dia:hover {
+    background-color: #1f2937;
+    box-shadow: 0 6px 12px rgba(249, 115, 22, 0.4);
 }
 
 .treino-dia-titulo {
     color: #f97316;
     margin-bottom: 0.75rem;
     text-align: center;
+    font-weight: 700;
+    font-size: 1.3rem;
 }
 
 .treino-lista {
@@ -389,10 +446,15 @@ a.button:hover {
     border-radius: 8px;
     margin-bottom: 1rem;
     text-align: left;
+    transition: background-color 0.3s ease;
+}
+.treino-item:hover {
+    background-color: #273549;
 }
 
 .treino-nome {
     color: #facc15;
+    font-weight: 600;
 }
 
 .treino-detalhe {
@@ -403,4 +465,80 @@ a.button:hover {
 .treino-nota {
     font-size: 0.9rem;
     color: #94a3b8;
+}
+
+/* DARK MODE */
+body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+.dark-mode .tab-content,
+.dark-mode input,
+.dark-mode select,
+.dark-mode button {
+    background-color: #1e1e1e;
+    color: #fff;
+    border-color: #333;
+}
+.dark-mode a {
+    color: #8ab4f8;
+}
+
+/* ANIMAÇÕES KEYFRAMES */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
 }
