@@ -45,50 +45,300 @@ function exibirDicas() {
   dicasContainer.innerHTML = dicasHTML;
   document.querySelector('.result-section').appendChild(dicasContainer);
 }
+function gerarDescricaoTreino(titulo) {
+  const mapa = {
+    "Rodagem": {
+      objetivo: "Desenvolver base aeróbica com baixo impacto.",
+      ritmo: "Leve (3–4/10 na percepção de esforço). Você deve conseguir conversar.",
+      aquecimento: "5 min de caminhada + 3 exercícios educativos (ex: skipping, joelho alto).",
+      desaquecimento: "Caminhada leve de 3 a 5 min + alongamento leve.",
+      observacao: "Se cansar, caminhe por 1 minuto e retome. Construa consistência antes da velocidade."
+    },
+    "Fartlek": {
+      objetivo: "Melhorar adaptação cardiovascular com variações de ritmo.",
+      ritmo: "Médio a forte nos estímulos (6–8/10). Pausas caminhando ou trote.",
+      aquecimento: "5 min de trote leve + educativos dinâmicos.",
+      desaquecimento: "3 min de trote leve + alongamento.",
+      observacao: "Use os trechos leves para recuperar. Foque no controle da respiração."
+    },
+    "Intervalado": {
+      objetivo: "Aumentar velocidade, resistência anaeróbica e VO2máx.",
+      ritmo: "Forte nos estímulos (7–9/10). Pausas caminhando ou trote leve.",
+      aquecimento: "8 a 10 min de corrida leve + educativos (saltitos, deslocamento).",
+      desaquecimento: "Trote leve de 5 min + hidratação.",
+      observacao: "Caso exausto, aumente o tempo de pausa entre séries."
+    },
+    "Tempo Run": {
+      objetivo: "Melhorar limiar anaeróbico e correr em ritmo sustentado.",
+      ritmo: "Firme e constante (6–7/10). Difícil falar, mas controlável.",
+      aquecimento: "5 min de caminhada + 5 min de corrida leve.",
+      desaquecimento: "3–5 min de caminhada leve + respiração profunda.",
+      observacao: "Evite começar muito forte. Encontre seu ritmo e mantenha."
+    },
+    "Longão": {
+      objetivo: "Construir resistência geral para a prova-alvo.",
+      ritmo: "Bem leve (3/10). Deve terminar se sentindo capaz de correr mais.",
+      aquecimento: "5 min caminhada + 5 min de corrida leve.",
+      desaquecimento: "Caminhada de 5 min + hidratação + alongamento suave.",
+      observacao: "Priorize sono, alimentação e água antes do treino. Foco no tempo total em movimento."
+    },
+    "Regenerativo": {
+      objetivo: "Recuperar o corpo com movimento leve.",
+      ritmo: "Muito leve (2/10). Conversa fácil e respiração tranquila.",
+      aquecimento: "Caminhada leve de 5 min.",
+      desaquecimento: "Alongamentos suaves. Respiração diafragmática.",
+      observacao: "Treino leve é essencial. Evite acelerar mesmo se se sentir bem."
+    },
+    "Ritmo de prova": {
+      objetivo: "Acostumar-se com o ritmo esperado no dia da prova.",
+      ritmo: "Idêntico ao da prova-alvo. Esforço moderado a forte (6–7/10).",
+      aquecimento: "Trote de 10 min + 3 acelerações de 30s.",
+      desaquecimento: "Caminhada e hidratação.",
+      observacao: "Use relógio ou app para manter o ritmo planejado."
+    },
+    "Simulado": {
+      objetivo: "Testar preparo físico, ritmo e mentalidade para o dia da prova.",
+      ritmo: "Ritmo real da prova. Com controle e atenção ao corpo.",
+      aquecimento: "10 min corrida leve + educativos + tiros curtos (30s).",
+      desaquecimento: "Trote ou caminhada + reposição de líquidos e comida.",
+      observacao: "Trate como se fosse o grande dia. Planeje até o que comer."
+    },
+    "Polimento": {
+      objetivo: "Reduzir volume para maximizar performance.",
+      ritmo: "Leve com pequenos estímulos. Esforço 3–5/10.",
+      aquecimento: "Curto: 5 min de caminhada ou trote leve.",
+      desaquecimento: "Alongamento leve e foco mental.",
+      observacao: "Descanse mais. Mantenha apenas o ritmo do corpo acordado."
+    }
+  };
+
+  const chave = Object.keys(mapa).find(k => titulo.toLowerCase().includes(k.toLowerCase()));
+  const info = mapa[chave] || {
+    objetivo: "Treino complementar.",
+    ritmo: "Leve a moderado.",
+    aquecimento: "5 min de caminhada.",
+    desaquecimento: "Caminhada leve.",
+    observacao: "Respeite seu corpo. Adapte conforme necessário."
+  };
+
+  return `
+    <div style="margin-top:0.75rem; font-size:0.95rem; color:#94a3b8; line-height:1.5;">
+      <strong>🎯 Objetivo:</strong> ${info.objetivo}<br>
+      <strong>⏱️ Ritmo sugerido:</strong> ${info.ritmo}<br>
+      <strong>🔥 Aquecimento:</strong> ${info.aquecimento}<br>
+      <strong>🧘‍♂️ Desaquecimento:</strong> ${info.desaquecimento}<br>
+      <strong>⚠️ Observações:</strong> ${info.observacao}
+    </div>
+  `;
+}
 
 function gerarPlanilha(distance, level, days, semanasTotais) {
-  const planos = {}; // use seu objeto completo aqui
-  const planoSelecionado = planos[level] && planos[level][distance];
-  if (planoSelecionado) {
-    const treinos = [];
-    const totalSemanasPlano = planoSelecionado.semanas;
-
-    for (let semana = 1; semana <= semanasTotais; semana++) {
-      const fase = determinarFase(semana);
-      const semanaBase = semana <= totalSemanasPlano ? semana : totalSemanasPlano;
-      const treinoSemana = planoSelecionado.dados[semanaBase];
-
-      treinos.push(`
-        <div class="semana" style="margin-bottom: 2rem; text-align: center;">
-          <h3>Semana ${semana} – ${level.toUpperCase()} ${distance}K</h3>
-          <p><strong>Fase do Macrociclo:</strong> ${fase}</p>
-          <ul style="text-align: left; margin-top: 1rem;">
-      `);
-
-
-      for (let dia = 0; dia < days; dia++) {
-        const treino = treinoSemana[dia % treinoSemana.length];
-        const titulo = treino.includes(':') ? treino.split(':')[0] : "Treino";
-        const conteudo = treino.includes(':') ? treino.split(':')[1] : treino;
-
-        treinos.push(`
-          <li style="margin-bottom: 1rem;">
-            <details style="background-color: #0f172a; padding: 1rem; border-radius: 8px;">
-              <summary style="color: #f97316; font-weight: bold; cursor: pointer;">Dia ${dia + 1} – ${titulo}</summary>
-              <p style="margin-top: 0.75rem; color: #e2e8f0;">${conteudo}</p>
-              <a href="#" target="_blank" class="video-link" style="display: inline-block; background-color: #0ea5e9; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; text-decoration: none; margin-top: 0.5rem; font-weight: bold;">Ver vídeo</a>
-            </details>
-          </li>
-        `);
+  const planos = {
+    iniciante: {
+      5: {
+        semanas: 4,
+        dados: {
+          1: ["Rodagem: 20min leve", "Descanso", "Rodagem: 25min leve"],
+          2: ["Fartlek: 4x1min", "Descanso", "Rodagem: 30min"],
+          3: ["Intervalado: 3x400m", "Rodagem: 25min", "Descanso"],
+          4: ["Longão: 4km", "Descanso", "Rodagem leve: 20min"]
+        }
+      },
+      10: {
+        semanas: 6,
+        dados: {
+          1: ["Rodagem: 25min", "Descanso", "Rodagem: 30min"],
+          2: ["Intervalado: 4x400m", "Descanso", "Rodagem: 35min"],
+          3: ["Fartlek: 6x1min", "Rodagem: 25min", "Descanso"],
+          4: ["Longão: 6km", "Rodagem: 30min", "Descanso"],
+          5: ["Tempo Run: 20min", "Descanso", "Rodagem leve: 20min"],
+          6: ["Longão: 8km", "Descanso", "Rodagem leve: 25min"]
+        }
+      },
+      21: {
+        semanas: 8,
+        dados: {
+          1: ["Rodagem: 30min", "Descanso", "Rodagem: 35min"],
+          2: ["Intervalado: 5x400m", "Descanso", "Rodagem leve: 30min"],
+          3: ["Fartlek: 6x2min", "Rodagem: 30min", "Descanso"],
+          4: ["Longão: 10km", "Rodagem leve", "Descanso"],
+          5: ["Tempo Run: 25min", "Descanso", "Rodagem leve"],
+          6: ["Longão: 12km", "Rodagem leve", "Descanso"],
+          7: ["Ritmo de prova: 4km", "Rodagem leve", "Descanso"],
+          8: ["Simulado: 15km", "Descanso", "Rodagem leve"]
+        }
+      },
+      42: {
+        semanas: 12,
+        dados: {
+          1: ["Rodagem: 35min", "Descanso", "Rodagem leve"],
+          2: ["Fartlek: 6x3min", "Rodagem leve", "Descanso"],
+          3: ["Intervalado: 6x400m", "Rodagem leve", "Descanso"],
+          4: ["Longão: 14km", "Rodagem leve", "Descanso"],
+          5: ["Tempo Run: 30min", "Descanso", "Rodagem leve"],
+          6: ["Longão: 16km", "Rodagem leve", "Descanso"],
+          7: ["Ritmo de prova: 5km", "Rodagem leve", "Descanso"],
+          8: ["Longão: 18km", "Descanso", "Rodagem leve"],
+          9: ["Simulado: 21km", "Descanso", "Rodagem leve"],
+          10: ["Intervalado: 8x800m", "Rodagem leve", "Descanso"],
+          11: ["Longão: 22km", "Rodagem leve", "Descanso"],
+          12: ["Polimento: 10km leve", "Descanso", "Regenerativo: 30min"]
+        }
       }
-
-      treinos.push(`</ul></div>`);
+    },
+    intermediario: {
+      5: {
+        semanas: 4,
+        dados: {
+          1: ["Fartlek: 6x1min", "Rodagem: 30min", "Descanso"],
+          2: ["Intervalado: 4x600m", "Rodagem leve", "Descanso"],
+          3: ["Tempo Run: 20min", "Rodagem leve", "Descanso"],
+          4: ["Longão: 6km", "Descanso", "Rodagem leve"]
+        }
+      },
+      10: {
+        semanas: 6,
+        dados: {
+          1: ["Rodagem: 35min", "Fartlek: 6x1min", "Descanso"],
+          2: ["Intervalado: 5x600m", "Rodagem leve", "Descanso"],
+          3: ["Tempo Run: 25min", "Rodagem leve", "Descanso"],
+          4: ["Longão: 10km", "Descanso", "Rodagem leve"],
+          5: ["Simulado: 8km", "Descanso", "Regenerativo: 20min"],
+          6: ["Polimento: 5km leve", "Descanso", "Rodagem leve"]
+        }
+      },
+      21: {
+        semanas: 8,
+        dados: {
+          1: ["Rodagem: 40min", "Fartlek: 8x2min", "Descanso"],
+          2: ["Intervalado: 6x600m", "Rodagem leve", "Descanso"],
+          3: ["Tempo Run: 30min", "Rodagem leve", "Descanso"],
+          4: ["Longão: 14km", "Rodagem leve", "Descanso"],
+          5: ["Ritmo de prova: 6km", "Rodagem leve", "Descanso"],
+          6: ["Longão: 16km", "Rodagem leve", "Descanso"],
+          7: ["Simulado: 18km", "Rodagem leve", "Descanso"],
+          8: ["Polimento: 10km leve", "Descanso", "Regenerativo"]
+        }
+      },
+      42: {
+        semanas: 12,
+        dados: {
+          1: ["Rodagem: 40min", "Fartlek: 8x2min", "Descanso"],
+          2: ["Intervalado: 6x800m", "Rodagem leve", "Descanso"],
+          3: ["Tempo Run: 35min", "Rodagem leve", "Descanso"],
+          4: ["Longão: 16km", "Rodagem leve", "Descanso"],
+          5: ["Ritmo de prova: 8km", "Rodagem leve", "Descanso"],
+          6: ["Longão: 18km", "Rodagem leve", "Descanso"],
+          7: ["Simulado: 25km", "Rodagem leve", "Descanso"],
+          8: ["Intervalado: 10x800m", "Rodagem leve", "Descanso"],
+          9: ["Longão: 28km", "Descanso", "Rodagem leve"],
+          10: ["Ritmo de prova: 12km", "Rodagem leve", "Descanso"],
+          11: ["Simulado: 32km", "Rodagem leve", "Descanso"],
+          12: ["Polimento: 15km leve", "Descanso", "Rodagem: 20min"]
+        }
+      }
+    },
+    avancado: {
+      5: {
+        semanas: 4,
+        dados: {
+          1: ["Intervalado: 5x800m", "Rodagem leve", "Descanso"],
+          2: ["Tempo Run: 25min", "Rodagem leve", "Descanso"],
+          3: ["Fartlek: 10x1min", "Rodagem leve", "Descanso"],
+          4: ["Longão: 8km", "Rodagem leve", "Descanso"]
+        }
+      },
+      10: {
+        semanas: 6,
+        dados: {
+          1: ["Intervalado: 6x800m", "Rodagem leve", "Descanso"],
+          2: ["Tempo Run: 30min", "Rodagem leve", "Descanso"],
+          3: ["Fartlek: 8x2min", "Rodagem leve", "Descanso"],
+          4: ["Longão: 12km", "Rodagem leve", "Descanso"],
+          5: ["Simulado: 10km", "Descanso", "Regenerativo: 20min"],
+          6: ["Polimento: 6km leve", "Rodagem leve", "Descanso"]
+        }
+      },
+      21: {
+        semanas: 8,
+        dados: {
+          1: ["Intervalado: 6x1000m", "Rodagem leve", "Descanso"],
+          2: ["Tempo Run: 35min", "Rodagem leve", "Descanso"],
+          3: ["Fartlek: 8x3min", "Rodagem leve", "Descanso"],
+          4: ["Longão: 18km", "Rodagem leve", "Descanso"],
+          5: ["Ritmo de prova: 10km", "Rodagem leve", "Descanso"],
+          6: ["Simulado: 21km", "Descanso", "Regenerativo"],
+          7: ["Polimento: 12km leve", "Rodagem leve", "Descanso"],
+          8: ["Rodagem leve: 30min", "Descanso", "Prova"]
+        }
+      },
+      42: {
+        semanas: 12,
+        dados: {
+          1: ["Intervalado: 8x1000m", "Rodagem leve", "Descanso"],
+          2: ["Tempo Run: 40min", "Rodagem leve", "Descanso"],
+          3: ["Fartlek: 10x2min", "Rodagem leve", "Descanso"],
+          4: ["Longão: 20km", "Rodagem leve", "Descanso"],
+          5: ["Intervalado: 6x1600m", "Rodagem leve", "Descanso"],
+          6: ["Longão: 24km", "Rodagem leve", "Descanso"],
+          7: ["Ritmo de prova: 15km", "Rodagem leve", "Descanso"],
+          8: ["Simulado: 30km", "Descanso", "Rodagem leve"],
+          9: ["Intervalado: 4x2000m", "Rodagem leve", "Descanso"],
+          10: ["Longão: 34km", "Rodagem leve", "Descanso"],
+          11: ["Polimento: 18km leve", "Rodagem leve", "Descanso"],
+          12: ["Rodagem leve: 30min", "Descanso", "Prova"]
+        }
+      }
     }
+  };
 
-    return treinos.join('');
+
+  const planoPorNivel = planos[level];
+  if (!planoPorNivel || !planoPorNivel[distance]) {
+    return `<p class="alerta">Desculpe, não há planos disponíveis para ${level} e ${distance}km no momento.</p>`;
   }
 
-  return `<p style="text-align:center; color:#facc15; background-color:#1e293b; padding:1rem; border-radius:8px; margin-top:1rem;">Desculpe, ainda não temos um plano estruturado para esse nível/distância com ${semanasTotais} semanas.</p>`;
+  const planoSelecionado = planoPorNivel[distance];
+  const totalSemanasPlano = planoSelecionado.semanas;
+  const semanasUsadas = Math.min(semanasTotais, totalSemanasPlano);
+
+  const treinos = [];
+
+  for (let semana = 1; semana <= semanasTotais; semana++) {
+    const fase = determinarFase(semana);
+    const semanaBase = semana <= totalSemanasPlano ? semana : totalSemanasPlano;
+    const treinoSemana = planoSelecionado.dados[semanaBase];
+
+    treinos.push(`
+      <div class="semana">
+        <h3>Semana ${semana} – ${level.toUpperCase()} ${distance}K</h3>
+        <p><strong>Fase do Macrociclo:</strong> ${fase}</p>
+        <ul>
+    `);
+
+    for (let dia = 0; dia < days; dia++) {
+      const treino = treinoSemana[dia % treinoSemana.length];
+      const [titulo, conteudo] = treino.includes(':') ? treino.split(':') : ["Treino", treino];
+
+      treinos.push(`
+        <li>
+          <details>
+            <summary>Dia ${dia + 1} – ${titulo}</summary>
+            <p style="margin-top: 0.75rem; color: #e2e8f0;">${conteudo}</p>
+              <p style="margin-top: 0.75rem; color: #e2e8f0;">${conteudo}</p>
+                ${gerarDescricaoTreino(titulo.trim())}
+
+
+
+          </details>
+        </li>
+      `);
+    }
+
+    treinos.push(`</ul></div>`);
+  }
+
+  return treinos.join('');
 }
 
 // PDF
