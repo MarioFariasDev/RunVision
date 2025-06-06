@@ -17,89 +17,76 @@ function determinarFase(semana) {
   if (semana <= 14) return "Polimento";
   return "Recuperação";
 }
-function gerarDescricaoTreino(titulo) {
+function gerarDescricaoTreino(titulo, conteudoBruto = '') {
   const mapa = {
     "Rodagem": {
       objetivo: "Desenvolver base aeróbica com baixo impacto.",
-      ritmo: "Leve (3–4/10 na percepção de esforço). Você deve conseguir conversar.",
-      aquecimento: "5 min de caminhada + 3 exercícios educativos (ex: skipping, joelho alto).",
-      desaquecimento: "Caminhada leve de 3 a 5 min + alongamento leve.",
-      observacao: "Se cansar, caminhe por 1 minuto e retome. Construa consistência antes da velocidade."
+      ritmo: "Leve",
+      ritmoTexto: "Ritmo leve (deve conseguir conversar durante o treino).",
     },
     "Fartlek": {
       objetivo: "Melhorar adaptação cardiovascular com variações de ritmo.",
-      ritmo: "Médio a forte nos estímulos (6–8/10). Pausas caminhando ou trote.",
-      aquecimento: "5 min de trote leve + educativos dinâmicos.",
-      desaquecimento: "3 min de trote leve + alongamento.",
-      observacao: "Use os trechos leves para recuperar. Foque no controle da respiração."
+      ritmo: "Moderado a forte",
+      ritmoTexto: "Ritmo moderado a forte (6–8/10 na percepção de esforço).",
     },
     "Intervalado": {
-      objetivo: "Aumentar velocidade, resistência anaeróbica e VO2máx.",
-      ritmo: "Forte nos estímulos (7–9/10). Pausas caminhando ou trote leve.",
-      aquecimento: "8 a 10 min de corrida leve + educativos (saltitos, deslocamento).",
-      desaquecimento: "Trote leve de 5 min + hidratação.",
-      observacao: "Caso exausto, aumente o tempo de pausa entre séries."
+      objetivo: "Aumentar velocidade e resistência anaeróbica.",
+      ritmo: "Forte",
+      ritmoTexto: "Ritmo forte (7–9/10 na percepção de esforço).",
     },
     "Tempo Run": {
-      objetivo: "Melhorar limiar anaeróbico e correr em ritmo sustentado.",
-      ritmo: "Firme e constante (6–7/10). Difícil falar, mas controlável.",
-      aquecimento: "5 min de caminhada + 5 min de corrida leve.",
-      desaquecimento: "3–5 min de caminhada leve + respiração profunda.",
-      observacao: "Evite começar muito forte. Encontre seu ritmo e mantenha."
+      objetivo: "Melhorar o limiar anaeróbico.",
+      ritmo: "Moderado a forte",
+      ritmoTexto: "Ritmo moderado a forte, sustentado (6–7/10).",
     },
     "Longao": {
-      objetivo: "Construir resistência geral para a prova-alvo.",
-      ritmo: "Bem leve (3/10). Deve terminar se sentindo capaz de correr mais.",
-      aquecimento: "5 min caminhada + 5 min de corrida leve.",
-      desaquecimento: "Caminhada de 5 min + hidratação + alongamento suave.",
-      observacao: "Priorize sono, alimentação e água antes do treino. Foco no tempo total em movimento."
+      objetivo: "Construir resistência para provas longas.",
+      ritmo: "Leve",
+      ritmoTexto: "Ritmo leve e constante (3/10).",
     },
     "Regenerativo": {
-      objetivo: "Recuperar o corpo com movimento leve.",
-      ritmo: "Muito leve (2/10). Conversa fácil e respiração tranquila.",
-      aquecimento: "Caminhada leve de 5 min.",
-      desaquecimento: "Alongamentos suaves. Respiração diafragmática.",
-      observacao: "Treino leve é essencial. Evite acelerar mesmo se se sentir bem."
+      objetivo: "Promover recuperação ativa.",
+      ritmo: "Muito leve",
+      ritmoTexto: "Ritmo muito leve (2/10).",
     },
     "Ritmo de prova": {
-      objetivo: "Acostumar-se com o ritmo esperado no dia da prova.",
-      ritmo: "Idêntico ao da prova-alvo. Esforço moderado a forte (6–7/10).",
-      aquecimento: "Trote de 10 min + 3 acelerações de 30s.",
-      desaquecimento: "Caminhada e hidratação.",
-      observacao: "Use relógio ou app para manter o ritmo planejado."
+      objetivo: "Simular o ritmo da prova-alvo.",
+      ritmo: "Moderado a forte",
+      ritmoTexto: "Ritmo alvo da prova (6–7/10).",
     },
     "Simulado": {
-      objetivo: "Testar preparo físico, ritmo e mentalidade para o dia da prova.",
-      ritmo: "Ritmo real da prova. Com controle e atenção ao corpo.",
-      aquecimento: "10 min corrida leve + educativos + tiros curtos (30s).",
-      desaquecimento: "Trote ou caminhada + reposição de líquidos e comida.",
-      observacao: "Trate como se fosse o grande dia. Planeje até o que comer."
+      objetivo: "Reproduzir as condições da prova.",
+      ritmo: "Moderado a forte",
+      ritmoTexto: "Ritmo real da prova, de forma controlada.",
     },
     "Polimento": {
-      objetivo: "Reduzir volume para maximizar performance.",
-      ritmo: "Leve com pequenos estímulos. Esforço 3–5/10.",
-      aquecimento: "Curto: 5 min de caminhada ou trote leve.",
-      desaquecimento: "Alongamento leve e foco mental.",
-      observacao: "Descanse mais. Mantenha apenas o ritmo do corpo acordado."
+      objetivo: "Reduzir volume mantendo qualidade.",
+      ritmo: "Leve",
+      ritmoTexto: "Ritmo leve com pequenos estímulos.",
+    },
+    "Descanso": {
+      objetivo: "Dia livre para recuperação total.",
+      ritmo: "-",
+      ritmoTexto: "Dia sem atividades físicas estruturadas.",
+    },
+    "Prova": {
+      objetivo: "Executar a prova-alvo.",
+      ritmo: "Ritmo de prova",
+      ritmoTexto: "Dê o seu melhor conforme o planejado.",
     }
   };
 
-  const chave = Object.keys(mapa).find(k => titulo.toLowerCase().includes(k.toLowerCase()));
-  const info = mapa[chave] || {
-    objetivo: "Treino complementar.",
-    ritmo: "Leve a moderado.",
-    aquecimento: "5 min de caminhada.",
-    desaquecimento: "Caminhada leve.",
-    observacao: "Respeite seu corpo. Adapte conforme necessário."
-  };
+  const chave = Object.keys(mapa).find(k => titulo.toLowerCase().includes(k.toLowerCase())) || 'Rodagem';
+  const info = mapa[chave];
+
+  let kmMin = conteudoBruto.toLowerCase().includes("min") ? conteudoBruto : "Duração ou distância não especificada";
 
   return `
     <div style="margin-top:0.75rem; font-size:0.95rem; color:#94a3b8; line-height:1.5;">
-      <strong>🎯 Objetivo:</strong> ${info.objetivo}<br>
-      <strong>⏱️ Ritmo sugerido:</strong> ${info.ritmo}<br>
-      <strong>🔥 Aquecimento:</strong> ${info.aquecimento}<br>
-      <strong>🧘‍♂️ Desaquecimento:</strong> ${info.desaquecimento}<br>
-      <strong>⚠️ Observações:</strong> ${info.observacao}
+      <strong>Objetivo:</strong> ${info.objetivo}<br>
+      <strong>Duração/Distância:</strong> ${kmMin}<br>
+      <strong>Ritmo sugerido:</strong> ${info.ritmoTexto}<br>
+      <strong>Observação:</strong> Execute o treino conforme o ritmo indicado, adaptando se necessário.
     </div>
   `;
 }
@@ -272,7 +259,7 @@ function gerarPlanilha(distance, level, days, semanasTotais) {
 
   const planoSelecionado = planoPorNivel[distance];
   const totalSemanasPlano = planoSelecionado.semanas;
-  Math.min(semanasTotais, totalSemanasPlano);
+  semanasTotais = Math.min(semanasTotais, totalSemanasPlano);
   const treinos = [];
 
   for (let semana = 1; semana <= semanasTotais; semana++) {
@@ -290,17 +277,15 @@ function gerarPlanilha(distance, level, days, semanasTotais) {
     for (let dia = 0; dia < days; dia++) {
       const treino = treinoSemana[dia % treinoSemana.length];
       const [titulo, conteudo] = treino.includes(':') ? treino.split(':') : ["Treino", treino];
+      const tituloLimpo = titulo.trim();
+      const conteudoLimpo = conteudo.trim();
 
       treinos.push(`
         <li>
           <details>
-            <summary>Dia ${dia + 1} – ${titulo}</summary>
-            <p style="margin-top: 0.75rem; color: #e2e8f0;">${conteudo}</p>
-              <p style="margin-top: 0.75rem; color: #e2e8f0;">${conteudo}</p>
-                ${gerarDescricaoTreino(titulo.trim())}
-
-
-
+            <summary>Dia ${dia + 1} – ${tituloLimpo}</summary>
+            <p style="margin-top: 0.75rem; color: #e2e8f0;">${conteudoLimpo}</p>
+            ${gerarDescricaoTreino(tituloLimpo, conteudoLimpo)}
           </details>
         </li>
       `);
@@ -312,56 +297,86 @@ function gerarPlanilha(distance, level, days, semanasTotais) {
   return treinos.join('');
 }
 
-// PDF
-const { jsPDF } = window.jspdf;
-document.getElementById('download-pdf').addEventListener('click', function () {
+// Geração do PDF SEM emojis e com texto UTF-8 limpo
+document.getElementById("download-pdf")?.addEventListener("click", () => {
+  const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
 
-  const content = document.getElementById('planilha');
-  const clone = content.cloneNode(true);
-  clone.querySelectorAll('details').forEach(d => d.open = true);
+  const treinoEl = document.getElementById("planilha");
+  if (!treinoEl) return;
 
-  const semanas = clone.querySelectorAll('.semana');
-  let y = 35;
+  const titulo = "Plano de Treino de Corrida – RunVision";
 
-  doc.setFont('helvetica', 'bold');
+  let y = 20;
+
+  doc.setFont("helvetica", "normal");
   doc.setFontSize(16);
-  doc.text('Plano de Treino Personalizado – RunVision', 105, 20, { align: 'center' });
+  doc.text(titulo, 105, y, { align: "center" });
+  y += 10;
 
-  semanas.forEach((semana) => {
-    const titulo = semana.querySelector('h3')?.innerText || '';
-    const fase = semana.querySelector('p')?.innerText || '';
-    const treinos = semana.querySelectorAll('li');
+  // Início da varredura pelas semanas
+  const semanas = treinoEl.querySelectorAll(".semana");
 
-    if (y > 260) { doc.addPage(); y = 20; }
+  semanas.forEach((semana, index) => {
+    if (y > 250) { doc.addPage(); y = 20; }
 
-    doc.setFontSize(13);
-    doc.setFont('helvetica', 'bold');
-    doc.setTextColor(33, 37, 41);
-    doc.text(titulo, 10, y);
-    y += 6;
+    doc.setDrawColor(200);
+    doc.line(15, y - 2, 195, y - 2);
 
+    const tituloSemana = semana.querySelector("h3")?.innerText || `Semana ${index + 1}`;
+    const fase = semana.querySelector("p")?.innerText || "";
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.text(tituloSemana, 15, y);
+    y += 7;
+
+    doc.setFont("helvetica", "normal");
     doc.setFontSize(11);
-    doc.setFont('helvetica', 'normal');
     doc.setTextColor(100, 100, 100);
-    doc.text(fase, 10, y);
-    y += 6;
+    doc.text(fase, 15, y);
+    y += 8;
+    doc.setTextColor(0, 0, 0);
 
+    const treinos = semana.querySelectorAll("li");
     treinos.forEach((treino) => {
-      if (y > 275) { doc.addPage(); y = 20; }
-      const texto = treino.innerText.trim();
-      const lines = doc.splitTextToSize(texto, 180);
+      if (y > 270) { doc.addPage(); y = 20; }
+
+      const tituloDia = treino.querySelector("summary")?.innerText || "";
+      const conteudo = treino.querySelector("p")?.innerText || "";
+      const descricao = treino.querySelector("div")?.innerText || "";
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(11);
+      doc.text(`• ${tituloDia}`, 17, y);
+      y += 5;
+
+      doc.setFont("helvetica", "normal");
       doc.setFontSize(10);
-      doc.setTextColor(0, 0, 0);
-      doc.text(lines, 10, y);
-      y += lines.length * 5 + 2;
+      doc.text(`Duração/Distância: ${conteudo}`, 20, y);
+      y += 5;
+
+      const explicacaoFormatada = descricao
+        .replace(/Objetivo:/g, '\nObjetivo:')
+        .replace(/Ritmo sugerido:/g, '\nRitmo sugerido:')
+        .replace(/Aquecimento:/g, '\nAquecimento:')
+        .replace(/Desaquecimento:/g, '\nDesaquecimento:')
+        .replace(/Observações:/g, '\nObservações:')
+        .trim();
+
+      const linhas = doc.splitTextToSize(explicacaoFormatada, 170);
+      doc.text(linhas, 20, y);
+      y += linhas.length * 5 + 2;
     });
 
-    y += 5;
+    y += 6;
   });
 
-  doc.save('planilha-runvision.pdf');
+  doc.save("planilha-runvision.pdf");
 });
+
+
+
 
 // Alternância de abas
 document.querySelectorAll('.tab-button').forEach(button => {
