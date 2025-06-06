@@ -6,8 +6,7 @@ document.getElementById('training-form').addEventListener('submit', function (e)
   const days = parseInt(document.getElementById('days').value);
   const semanas = parseInt(document.getElementById('semanas').value);
 
-  const planilha = gerarPlanilha(distance, level, days, semanas);
-  document.getElementById('planilha').innerHTML = planilha;
+  document.getElementById('planilha').innerHTML = gerarPlanilha(distance, level, days, semanas);
   document.getElementById('download-pdf').style.display = 'block';
 });
 
@@ -17,33 +16,6 @@ function determinarFase(semana) {
   if (semana <= 12) return "Pico";
   if (semana <= 14) return "Polimento";
   return "Recuperação";
-}
-
-function gerarDicasHTML() {
-  return `
-    <section class="dicas-section">
-      <h2>Dicas de Treino</h2>
-      <p>Confira vídeos úteis sobre os principais tipos de treino:</p>
-      <ul>
-        <li><strong>Drills (técnica de corrida):</strong> <a href="https://www.youtube.com/watch?v=bm8mYVVZy0k" target="_blank">Drills essenciais para corrida</a></li>
-        <li><strong>Fartlek:</strong> <a href="https://www.youtube.com/watch?v=6dQ9aJYcMZc" target="_blank">Como fazer Fartlek corretamente</a></li>
-        <li><strong>Intervalado:</strong> <a href="https://www.youtube.com/watch?v=dkRZzDUF1wo" target="_blank">Treino intervalado para performance</a></li>
-        <li><strong>Tempo Run:</strong> <a href="https://www.youtube.com/watch?v=iL0_EoJ3cZc" target="_blank">Corrida em ritmo constante</a></li>
-        <li><strong>Longão:</strong> <a href="https://www.youtube.com/watch?v=UGuUga-1Go8" target="_blank">Como fazer o longão corretamente</a></li>
-        <li><strong>Regenerativo:</strong> <a href="https://www.youtube.com/watch?v=OMVDK5Ar0iA" target="_blank">Importância do treino regenerativo</a></li>
-        <li><strong>Ritmo de prova:</strong> <a href="https://www.youtube.com/watch?v=_a0GywAFMKU" target="_blank">Como encontrar seu pace ideal</a></li>
-        <li><strong>Simulado:</strong> <a href="https://www.youtube.com/watch?v=vb7_M-k7bJQ" target="_blank">Simulado de corrida de rua</a></li>
-        <li><strong>Educativos:</strong> <a href="https://www.youtube.com/watch?v=Z-wVu2Ke_pE" target="_blank">Educativos para melhorar sua corrida</a></li>
-      </ul>
-    </section>
-  `;
-}
-
-function exibirDicas() {
-  const dicasHTML = gerarDicasHTML();
-  const dicasContainer = document.createElement('div');
-  dicasContainer.innerHTML = dicasHTML;
-  document.querySelector('.result-section').appendChild(dicasContainer);
 }
 function gerarDescricaoTreino(titulo) {
   const mapa = {
@@ -75,7 +47,7 @@ function gerarDescricaoTreino(titulo) {
       desaquecimento: "3–5 min de caminhada leve + respiração profunda.",
       observacao: "Evite começar muito forte. Encontre seu ritmo e mantenha."
     },
-    "Longão": {
+    "Longao": {
       objetivo: "Construir resistência geral para a prova-alvo.",
       ritmo: "Bem leve (3/10). Deve terminar se sentindo capaz de correr mais.",
       aquecimento: "5 min caminhada + 5 min de corrida leve.",
@@ -300,8 +272,7 @@ function gerarPlanilha(distance, level, days, semanasTotais) {
 
   const planoSelecionado = planoPorNivel[distance];
   const totalSemanasPlano = planoSelecionado.semanas;
-  const semanasUsadas = Math.min(semanasTotais, totalSemanasPlano);
-
+  Math.min(semanasTotais, totalSemanasPlano);
   const treinos = [];
 
   for (let semana = 1; semana <= semanasTotais; semana++) {
@@ -841,17 +812,25 @@ const treinoData = {
 document.getElementById('form-musculacao')?.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  // Pegando dados do formulário
   const nomeAluno = this.nome.value.trim();
   const objetivo = this.objetivo.value;
   const frequencia = parseInt(this.dias.value);
   const container = document.getElementById('treino-musculacao');
 
-  // Buscar planos de treino para o objetivo
   const planos = treinoData[objetivo];
   if (!planos) return;
 
-  // Montar resultado HTML
+  function getSeriesReps(objetivo) {
+    switch (objetivo) {
+      case 'hipertrofia': return '4 séries de 8-12 repetições';
+      case 'emagrecimento': return '3 séries de 15-20 repetições';
+      case 'resistencia': return '2-3 séries de 15-25 repetições';
+      default: return 'Séries e repetições personalizadas';
+    }
+  }
+
+  const seriesReps = getSeriesReps(objetivo);
+
   let resultado = `
     <div class="treino-container">
       <h3 class="treino-titulo">${objetivo.charAt(0).toUpperCase() + objetivo.slice(1)} – ${frequencia} dias</h3>
@@ -870,6 +849,7 @@ document.getElementById('form-musculacao')?.addEventListener('submit', function 
       resultado += `
         <li class="treino-item">
           <p><strong class="treino-nome">${ex.nome}</strong> – ${ex.tecnica}</p>
+          <p class="treino-series">${seriesReps}</p>
           <p class="treino-detalhe">Cadência: ${ex.cadencia} | Descanso: ${ex.descanso}</p>
           <p class="treino-nota">Nota: ${ex.nota}</p>
           <div><a href="${ex.video}" target="_blank" class="video-link">Ver demonstração</a></div>
@@ -885,17 +865,15 @@ document.getElementById('form-musculacao')?.addEventListener('submit', function 
   </div>`;
 
   container.innerHTML = resultado;
-
-  // Mostrar botão para baixar ficha PDF
   document.getElementById("download-ficha").style.display = "block";
 
-  // Evento para voltar e editar (scroll até o formulário)
   document.getElementById("voltar-editar").addEventListener("click", () => {
     document.getElementById("form-musculacao").scrollIntoView({ behavior: "smooth" });
   });
 });
 
 // Geração do PDF da ficha de musculação
+
 document.getElementById("download-ficha")?.addEventListener("click", () => {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
@@ -906,7 +884,6 @@ document.getElementById("download-ficha")?.addEventListener("click", () => {
 
   let y = 20;
 
-  // Cabeçalho
   doc.setFont("helvetica", "normal");
   doc.setFontSize(16);
   doc.text("Ficha de Treino de Musculação – RunVision", 105, y, { align: "center" });
@@ -920,7 +897,6 @@ document.getElementById("download-ficha")?.addEventListener("click", () => {
   doc.text(aluno, 15, y);
   y += 10;
 
-  // Explicações técnicas
   const explicacoes = [
     "Técnicas Utilizadas:",
     "• Drop-set: Após a falha, reduza o peso e continue o exercício sem descanso.",
@@ -943,12 +919,9 @@ document.getElementById("download-ficha")?.addEventListener("click", () => {
 
   y += 5;
 
-  // Listar dias e exercícios
   const dias = treinoEl.querySelectorAll(".treino-dia");
   dias.forEach((dia) => {
     if (y > 250) { doc.addPage(); y = 20; }
-
-    // Divisor visual
     doc.setDrawColor(200);
     doc.line(15, y - 2, 195, y - 2);
 
@@ -959,11 +932,11 @@ document.getElementById("download-ficha")?.addEventListener("click", () => {
     y += 7;
 
     const exercicios = dia.querySelectorAll(".treino-item");
-
     exercicios.forEach((ex) => {
       if (y > 270) { doc.addPage(); y = 20; }
 
       const nome = ex.querySelector(".treino-nome")?.innerText || "";
+      const series = ex.querySelector(".treino-series")?.innerText || "";
       const detalhes = ex.querySelector(".treino-detalhe")?.innerText || "";
       const nota = ex.querySelector(".treino-nota")?.innerText || "";
 
@@ -974,6 +947,11 @@ document.getElementById("download-ficha")?.addEventListener("click", () => {
 
       doc.setFont("helvetica", "normal");
       doc.setFontSize(10);
+      if (series) {
+        doc.text(series, 20, y);
+        y += 5;
+      }
+
       doc.text(detalhes, 20, y);
       y += 5;
 
