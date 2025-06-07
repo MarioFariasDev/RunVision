@@ -20,7 +20,6 @@
     <button class="tab-button" data-tab="doar-tab">Apoie o Projeto</button>
     <button class="tab-button" data-tab="acessorios-tab">Acessórios</button>
     <button class="tab-button" data-tab="produtos-tab">Produtos</button>
-    <button class="tab-button" data-tab="musculacao-tab">Musculação</button>
   </nav>
 
   <div id="planilha-tab" class="tab-content active">
@@ -135,47 +134,6 @@
                     <a href="https://wa.me/55092984413665" target="_blank">Chamar no WhatsApp</a>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- MUSCULAÇÃO -->
-    <div id="musculacao-tab" class="tab-content">
-        <form id="form-musculacao">
-            <label>Nome completo:</label>
-            <input type="text" name="nome" required />
-
-            <label>Nível do aluno:</label>
-            <select name="nivel" required>
-                <option value="iniciante">Iniciante</option>
-                <option value="intermediario">Intermediário</option>
-                <option value="avancado">Avançado</option>
-            </select>
-
-            <label>Objetivo principal:</label>
-            <select name="objetivo" required>
-                <option value="hipertrofia">Hipertrofia</option>
-                <option value="emagrecimento">Emagrecimento / Definição</option>
-                <option value="fortalecimento">Fortalecimento para Corrida</option>
-            </select>
-
-            <label>Quantos dias por semana você treina?</label>
-            <select name="dias" required>
-                <option value="2">2x por semana</option>
-                <option value="3">3x por semana</option>
-                <option value="4">4x por semana</option>
-                <option value="5">5x por semana</option>
-                <option value="6">6x por semana</option>
-            </select>
-
-            <button type="submit">Gerar treino</button>
-        </form>
-
-        <pre id="prompt-output"></pre>
-
-        <div class="result-section">
-            <h2>Seu Treino Personalizado</h2>
-            <div id="treino-musculacao"></div>
-            <button id="download-ficha" style="display:none;">Baixar Ficha</button>
         </div>
     </div>
 </main>
