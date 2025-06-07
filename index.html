@@ -1,200 +1,198 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="RunVision: Planilhas de corrida, treinos de musculação e dicas para corredores.">
-  <title>RunVision - Planilhas de Corrida</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>RunVision - Planilhas de Corrida</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-      <img src="imagem/logo.png" alt="Logo RunVision" style="height: 60px;">
+<header>
     <h1>RunVision</h1>
-    <p>Planilhas de treino, dicas e apoio ao corredor</p>
-  </header>
+    <p>Crie sua planilha de treinos personalizada para corrida</p>
+</header>
 
-  <main>
-    <nav class="tab-nav">
-      <button class="tab-button active" data-tab="planilha-tab">Planilha de Treino</button>
-      <button class="tab-button" data-tab="dicas-tab">Dicas de Treino</button>
-      <button class="tab-button" data-tab="doar-tab">Apoie o Projeto</button>
-      <button class="tab-button" data-tab="acessorios-tab">Acessórios</button>
-      <button class="tab-button" data-tab="produtos-tab">Produtos</button>
-      <button class="tab-button" data-tab="musculacao-tab">Musculação</button>
-    </nav>
+<main>
 
-    <!-- PLANILHA DE CORRIDA -->
-    <section id="planilha-tab" class="tab-content active">
-      <section class="form-section">
-        <h2>Monte sua planilha</h2>
-        <form id="training-form">
-          <label for="distance">Distância alvo:</label>
-          <select id="distance" required>
-            <option value="5">5 km</option>
-            <option value="10">10 km</option>
-            <option value="21">21 km</option>
-            <option value="42">42 km</option>
-          </select>
+  <nav class="tab-nav">
+    <button class="tab-button active" data-tab="planilha-tab">Planilha de Treino</button>
+    <button class="tab-button" data-tab="dicas-tab">Dicas de Treino</button>
+    <button class="tab-button" data-tab="doar-tab">Apoie o Projeto</button>
+    <button class="tab-button" data-tab="acessorios-tab">Acessórios</button>
+    <button class="tab-button" data-tab="produtos-tab">Produtos</button>
+    <button class="tab-button" data-tab="musculacao-tab">Musculação</button>
+  </nav>
 
-          <label for="level">Nível:</label>
-          <select id="level" required>
-            <option value="iniciante">Iniciante</option>
-            <option value="intermediario">Intermediário</option>
-            <option value="avancado">Avançado</option>
-          </select>
+  <div id="planilha-tab" class="tab-content active">
+        <div class="form-section">
+            <h2>Monte sua planilha</h2>
+            <form id="training-form">
+                <label for="distance">Distância alvo:</label>
+                <select id="distance" required>
+                    <option value="5">5 km</option>
+                    <option value="10">10 km</option>
+                    <option value="21">21 km</option>
+                    <option value="42">42 km</option>
+                </select>
 
-          <label for="days">Dias por semana:</label>
-          <select id="days" required>
-            <option value="3">3 dias</option>
-            <option value="4">4 dias</option>
-            <option value="5">5 dias</option>
-            <option value="6">6 dias</option>
-          </select>
+                <label for="level">Nível:</label>
+                <select id="level" required>
+                    <option value="iniciante">Iniciante</option>
+                    <option value="intermediario">Intermediário</option>
+                    <option value="avancado">Avançado</option>
+                </select>
 
-          <label for="semanas">Quantas semanas faltam para sua prova?</label>
-          <input type="number" id="semanas" min="1" max="24" required>
+                <label for="days">Dias por semana:</label>
+                <select id="days" required>
+                    <option value="3">3 dias</option>
+                    <option value="4">4 dias</option>
+                    <option value="5">5 dias</option>
+                    <option value="6">6 dias</option>
+                </select>
 
-          <button type="submit">Gerar Planilha</button>
-        </form>
-      </section>
+                <label for="semanas">Quantas semanas faltam para sua prova?</label>
+                <input type="number" id="semanas" min="1" max="24" required>
 
-      <section class="result-section">
-        <h2>Sua Planilha</h2>
-        <div id="planilha"></div>
-        <button id="download-pdf" style="display:none;">Baixar PDF</button>
-      </section>
-    </section>
+                <button type="submit">Gerar Planilha</button>
+            </form>
+        </div>
 
-    <!-- DICAS DE TREINO -->
-    <section id="dicas-tab" class="tab-content">
-      <section class="result-section">
-        <h2>Dicas de Treino</h2>
-        <ul style="padding-left: 1rem; line-height: 1.8;">
-          <li><a href="https://www.youtube.com/watch?v=7Y9XPpbmn2E" target="_blank">✅ Drills para Corrida</a></li>
-          <li><a href="https://www.youtube.com/watch?v=8KlZ3ze5HIY" target="_blank">✅ Fartlek na Prática</a></li>
-          <li><a href="https://www.youtube.com/watch?v=1TFFULDQaUU" target="_blank">✅ Intervalado Corretamente</a></li>
-          <li><a href="https://www.youtube.com/watch?v=dOdDLstL__g" target="_blank">✅ Longão</a></li>
-          <li><a href="https://www.youtube.com/watch?v=EUve1lNtqOI" target="_blank">✅ Ritmo Controlado</a></li>
-          <li><a href="https://www.youtube.com/watch?v=gXGzHWnLjLM" target="_blank">✅ Corrida Regenerativa</a></li>
-        </ul>
-      </section>
-    </section>
+        <div class="result-section">
+            <h2>Sua Planilha</h2>
+            <div id="planilha"></div>
+            <button id="download-pdf" style="display:none;">Baixar PDF</button>
+        </div>
+    </div>
+
+    <div id="dicas-tab" class="tab-content">
+        <div class="result-section">
+            <h2>Dicas de Treino em Vídeo</h2>
+            <ul style="padding-left: 1rem; line-height: 1.8;">
+                <li><a href="https://www.youtube.com/watch?v=7Y9XPpbmn2E" target="_blank">✅ Drills para Corrida (Técnica de Corrida)</a></li>
+                <li><a href="https://www.youtube.com/watch?v=8KlZ3ze5HIY" target="_blank">✅ Fartlek na Prática</a></li>
+                <li><a href="https://www.youtube.com/watch?v=1TFFULDQaUU" target="_blank">✅ Intervalado: Como Fazer Corretamente</a></li>
+                <li><a href="https://www.youtube.com/watch?v=dOdDLstL__g" target="_blank">✅ Longão: O Treino Mais Importante</a></li>
+                <li><a href="https://www.youtube.com/watch?v=EUve1lNtqOI" target="_blank">✅ Ritmo Controlado (Tempo Run)</a></li>
+                <li><a href="https://www.youtube.com/watch?v=gXGzHWnLjLM" target="_blank">✅ Corrida Regenerativa: Importância</a></li>
+                <li><a href="https://www.youtube.com/watch?v=fOaa-_WA5tk" target="_blank">✅ Técnicas de Educativos para Corrida</a></li>
+            </ul>
+        </div>
+    </div>
 
     <!-- APOIO -->
-    <section id="doar-tab" class="tab-content">
-      <section class="result-section">
-        <h2>Apoie este projeto</h2>
-        <p>Esse projeto foi criado com muito carinho para ajudar corredores de todo o Brasil.</p>
-        <p><strong>Chave PIX:</strong> 55073583/0001-72</p>
-        <img src="imagem/qrcode.jpg" alt="QR Code Pix">
-        <p style="margin-top: 1rem;">Sua doação ajuda Mario Farias a realizar a ultramaratona de 110km!</p>
-      </section>
-    </section>
+    <div id="doar-tab" class="tab-content">
+        <div class="result-section">
+            <h2>Apoie este projeto</h2>
+            <p>Esse projeto foi criado com muito carinho para ajudar corredores de todo o Brasil.</p>
+            <p><strong>Chave PIX:</strong> 55073583/0001-72</p>
+            <img src="imagem/qrcode.jpg" alt="QR Code Pix">
+            <p style="margin-top: 1rem;">Sua doação ajuda Mario Farias a realizar a ultramaratona de 110km!</p>
+        </div>
+    </div>
 
     <!-- ACESSÓRIOS -->
-    <section id="acessorios-tab" class="tab-content">
-      <section class="result-section">
-        <h2>Acessórios para Corrida</h2>
-        <div class="store-grid">
-          <div class="store-item">
-            <h3>Meia de Compressão Arrow Muvin</h3>
-            <p>Desenvolvida para proporcionar conforto e melhor desempenho.</p>
-            <a href="https://amzn.to/43U23Ne" target="_blank">Ver produto</a>
-          </div>
-          <div class="store-item">
-            <h3>Boné Five Panel Anth Co</h3>
-            <p>Impermeável Aba Reta Original Strapback.</p>
-            <a href="https://amzn.to/4klzbmZ" target="_blank">Ver produto</a>
-          </div>
-          <div class="store-item">
-            <h3>Atlhetica Nutrition Go Energy Gel</h3>
-            <p>Sabor Morango (10 sachês).</p>
-            <a href="https://amzn.to/4dL6QnK" target="_blank">Ver produto</a>
-          </div>
-          <div class="store-item">
-            <h3>Xiaomi Mi Band 8 Active</h3>
-            <p>Versão Global.</p>
-            <a href="https://amzn.to/44ZUllR" target="_blank">Ver produto</a>
-          </div>
+    <div id="acessorios-tab" class="tab-content">
+        <div class="result-section">
+            <h2>Acessórios para Corrida</h2>
+            <div class="store-grid">
+                <div class="store-item">
+                    <h3>Meia de Compressão Arrow Muvin</h3>
+                    <p>Desenvolvida para proporcionar conforto e melhor desempenho.</p>
+                    <a href="https://amzn.to/43U23Ne" target="_blank">Ver produto</a>
+                </div>
+                <div class="store-item">
+                    <h3>Boné Five Panel Anth Co</h3>
+                    <p>Impermeável Aba Reta Original Strapback.</p>
+                    <a href="https://amzn.to/4klzbmZ" target="_blank">Ver produto</a>
+                </div>
+                <div class="store-item">
+                    <h3>Atlhetica Nutrition Go Energy Gel</h3>
+                    <p>Sabor Morango (10 sachês).</p>
+                    <a href="https://amzn.to/4dL6QnK" target="_blank">Ver produto</a>
+                </div>
+                <div class="store-item">
+                    <h3>Xiaomi Mi Band 8 Active</h3>
+                    <p>Versão Global.</p>
+                    <a href="https://amzn.to/44ZUllR" target="_blank">Ver produto</a>
+                </div>
+            </div>
         </div>
-      </section>
-    </section>
+    </div>
 
     <!-- PRODUTOS -->
-    <section id="produtos-tab" class="tab-content">
-      <section class="result-section">
-        <h2>Produtos Premium</h2>
-        <div class="store-grid">
-          <div class="store-item">
-            <h3>📘 E-book do Corredor</h3>
-            <p>Dicas, planejamento e disciplina para iniciantes.</p>
-            <a href="https://pay.kiwify.com.br/j7FULm2" target="_blank">Acessar</a>
-          </div>
-          <div class="store-item">
-            <h3>🎯 Consultoria de Treino</h3>
-            <p>Planos exclusivos e acompanhamento com Mario.</p>
-            <a href="https://wa.me/55092984413665" target="_blank">Chamar no WhatsApp</a>
-          </div>
+    <div id="produtos-tab" class="tab-content">
+        <div class="result-section">
+            <h2>Produtos Premium</h2>
+            <div class="store-grid">
+                <div class="store-item">
+                    <h3>📘 E-book do Corredor</h3>
+                    <p>Dicas, planejamento e disciplina para iniciantes.</p>
+                    <a href="https://pay.kiwify.com.br/j7FULm2" target="_blank">Acessar</a>
+                </div>
+                <div class="store-item">
+                    <h3>🎯 Consultoria de Treino</h3>
+                    <p>Planos exclusivos e acompanhamento com Mario.</p>
+                    <a href="https://wa.me/55092984413665" target="_blank">Chamar no WhatsApp</a>
+                </div>
+            </div>
         </div>
-      </section>
-    </section>
+    </div>
 
     <!-- MUSCULAÇÃO -->
-    <section id="musculacao-tab" class="tab-content">
-      <form id="form-musculacao">
-        <label>Nome completo:</label>
-        <input type="text" name="nome" required />
+    <div id="musculacao-tab" class="tab-content">
+        <form id="form-musculacao">
+            <label>Nome completo:</label>
+            <input type="text" name="nome" required />
 
-        <label>Nível do aluno:</label>
-        <select name="nivel" required>
-          <option value="iniciante">Iniciante</option>
-          <option value="intermediario">Intermediário</option>
-          <option value="avancado">Avançado</option>
-        </select>
+            <label>Nível do aluno:</label>
+            <select name="nivel" required>
+                <option value="iniciante">Iniciante</option>
+                <option value="intermediario">Intermediário</option>
+                <option value="avancado">Avançado</option>
+            </select>
 
-        <label>Objetivo principal:</label>
-        <select name="objetivo" required>
-          <option value="hipertrofia">Hipertrofia</option>
-          <option value="emagrecimento">Emagrecimento / Definição</option>
-          <option value="fortalecimento">Fortalecimento para Corrida</option>
-        </select>
+            <label>Objetivo principal:</label>
+            <select name="objetivo" required>
+                <option value="hipertrofia">Hipertrofia</option>
+                <option value="emagrecimento">Emagrecimento / Definição</option>
+                <option value="fortalecimento">Fortalecimento para Corrida</option>
+            </select>
 
-        <label>Quantos dias por semana você treina?</label>
-        <select name="dias" required>
-          <option value="2">2x por semana</option>
-          <option value="3">3x por semana</option>
-          <option value="4">4x por semana</option>
-          <option value="5">5x por semana</option>
-          <option value="6">6x por semana</option>
-        </select>
+            <label>Quantos dias por semana você treina?</label>
+            <select name="dias" required>
+                <option value="2">2x por semana</option>
+                <option value="3">3x por semana</option>
+                <option value="4">4x por semana</option>
+                <option value="5">5x por semana</option>
+                <option value="6">6x por semana</option>
+            </select>
 
-        <button type="submit">Gerar treino</button>
-      </form>
+            <button type="submit">Gerar treino</button>
+        </form>
 
-      <pre id="prompt-output"></pre>
+        <pre id="prompt-output"></pre>
 
-      <section class="result-section">
-        <h2>Seu Treino Personalizado</h2>
-        <div id="treino-musculacao"></div>
-        <button id="download-ficha" style="display:none;">Baixar Ficha</button>
-      </section>
-    </section>
-  </main>
+        <div class="result-section">
+            <h2>Seu Treino Personalizado</h2>
+            <div id="treino-musculacao"></div>
+            <button id="download-ficha" style="display:none;">Baixar Ficha</button>
+        </div>
+    </div>
+</main>
 
-  <footer>
+<footer>
     <p>Projeto com propósito: Me ajude a correr 110km!</p>
     <p><strong>PIX:</strong> CNPJ: 55073583/0001-72</p>
     <p style="margin-top: 1rem; font-size: 0.9rem; color: #ccc;">
-      © 2025 RunVision — Projeto criado por Mario Farias. Todos os direitos reservados.
-    </p>
-  </footer>
+  © 2025 RunVision — Projeto criado por Mario Farias. Todos os direitos reservados.
+</p>
+</footer>
 
-  <a href="https://wa.me/55092984413665" class="whatsapp-button" target="_blank">
+<a href="https://wa.me/55092984413665" class="whatsapp-button" target="_blank">
     Fale comigo no WhatsApp
-  </a>
+</a>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
