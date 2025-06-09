@@ -542,3 +542,68 @@ body.dark-mode {
         opacity: 0.6;
     }
 }
+
+/* === MAGIC CSS === */
+
+/* Títulos com brilho intermitente */
+.magic-title {
+    animation: glowPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        text-shadow: 0 0 10px #f97316, 0 0 20px #f97316, 0 0 30px #f97316;
+    }
+    50% {
+        text-shadow: 0 0 5px #f97316, 0 0 10px #ea580c, 0 0 15px #ea580c;
+    }
+}
+
+/* Cards com sombra dinâmica ao mover o mouse */
+.card-hover:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(249, 115, 22, 0.4);
+}
+
+/* Botão mágico com brilho lateral */
+.button-magic {
+    position: relative;
+    overflow: hidden;
+}
+.button-magic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+    transform: skewX(-20deg);
+    animation: shine 2s infinite;
+}
+@keyframes shine {
+    0% { left: -75%; }
+    100% { left: 125%; }
+}
+
+/* Transições de aba com fade/zoom */
+.tab-content {
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.tab-content.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Elementos revelados ao rolar */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+[data-reveal].visible {
+    opacity: 1;
+    transform: translateY(0);
+}
