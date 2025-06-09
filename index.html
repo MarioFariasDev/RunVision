@@ -8,12 +8,11 @@
 </head>
 <body>
 <header>
-    <h1>RunVision</h1>
+    <h1 class="magic-title">RunVision</h1>
     <p>Crie sua planilha de treinos personalizada para corrida</p>
 </header>
 
 <main>
-
   <nav class="tab-nav">
     <button class="tab-button active" data-tab="planilha-tab">Planilha de Treino</button>
     <button class="tab-button" data-tab="dicas-tab">Dicas de Treino</button>
@@ -22,8 +21,8 @@
     <button class="tab-button" data-tab="produtos-tab">Produtos</button>
   </nav>
 
-  <div id="planilha-tab" class="tab-content active">
-        <div class="form-section">
+  <div id="planilha-tab" class="tab-content active" data-reveal>
+        <div class="form-section" data-reveal>
             <h2>Monte sua planilha</h2>
             <form id="training-form">
                 <label for="distance">Distância alvo:</label>
@@ -52,19 +51,19 @@
                 <label for="semanas">Quantas semanas faltam para sua prova?</label>
                 <input type="number" id="semanas" min="1" max="24" required>
 
-                <button type="submit">Gerar Planilha</button>
+                <button type="submit" class="button-magic">Gerar Planilha</button>
             </form>
         </div>
 
-        <div class="result-section">
+        <div class="result-section" data-reveal>
             <h2>Sua Planilha</h2>
             <div id="planilha"></div>
-            <button id="download-pdf" style="display:none;">Baixar PDF</button>
+            <button id="download-pdf" class="button-magic" style="display:none;">Baixar PDF</button>
         </div>
     </div>
 
-    <div id="dicas-tab" class="tab-content">
-        <div class="result-section">
+    <div id="dicas-tab" class="tab-content" data-reveal>
+        <div class="result-section card-hover">
             <h2>Dicas de Treino em Vídeo</h2>
             <ul style="padding-left: 1rem; line-height: 1.8;">
                 <li><a href="https://www.youtube.com/watch?v=7Y9XPpbmn2E" target="_blank">✅ Drills para Corrida (Técnica de Corrida)</a></li>
@@ -78,9 +77,8 @@
         </div>
     </div>
 
-    <!-- APOIO -->
-    <div id="doar-tab" class="tab-content">
-        <div class="result-section">
+    <div id="doar-tab" class="tab-content" data-reveal>
+        <div class="result-section card-hover">
             <h2>Apoie este projeto</h2>
             <p>Esse projeto foi criado com muito carinho para ajudar corredores de todo o Brasil.</p>
             <p><strong>Chave PIX:</strong> 55073583/0001-72</p>
@@ -89,27 +87,26 @@
         </div>
     </div>
 
-    <!-- ACESSÓRIOS -->
-    <div id="acessorios-tab" class="tab-content">
+    <div id="acessorios-tab" class="tab-content" data-reveal>
         <div class="result-section">
             <h2>Acessórios para Corrida</h2>
             <div class="store-grid">
-                <div class="store-item">
+                <div class="store-item card-hover">
                     <h3>Meia de Compressão Arrow Muvin</h3>
                     <p>Desenvolvida para proporcionar conforto e melhor desempenho.</p>
                     <a href="https://amzn.to/43U23Ne" target="_blank">Ver produto</a>
                 </div>
-                <div class="store-item">
+                <div class="store-item card-hover">
                     <h3>Boné Five Panel Anth Co</h3>
                     <p>Impermeável Aba Reta Original Strapback.</p>
                     <a href="https://amzn.to/4klzbmZ" target="_blank">Ver produto</a>
                 </div>
-                <div class="store-item">
+                <div class="store-item card-hover">
                     <h3>Atlhetica Nutrition Go Energy Gel</h3>
                     <p>Sabor Morango (10 sachês).</p>
                     <a href="https://amzn.to/4dL6QnK" target="_blank">Ver produto</a>
                 </div>
-                <div class="store-item">
+                <div class="store-item card-hover">
                     <h3>Xiaomi Mi Band 8 Active</h3>
                     <p>Versão Global.</p>
                     <a href="https://amzn.to/44ZUllR" target="_blank">Ver produto</a>
@@ -118,17 +115,16 @@
         </div>
     </div>
 
-    <!-- PRODUTOS -->
-    <div id="produtos-tab" class="tab-content">
+    <div id="produtos-tab" class="tab-content" data-reveal>
         <div class="result-section">
             <h2>Produtos Premium</h2>
             <div class="store-grid">
-                <div class="store-item">
+                <div class="store-item card-hover">
                     <h3>📘 E-book do Corredor</h3>
                     <p>Dicas, planejamento e disciplina para iniciantes.</p>
                     <a href="https://pay.kiwify.com.br/j7FULm2" target="_blank">Acessar</a>
                 </div>
-                <div class="store-item">
+                <div class="store-item card-hover">
                     <h3>🎯 Consultoria de Treino</h3>
                     <p>Planos exclusivos e acompanhamento com Mario.</p>
                     <a href="https://wa.me/55092984413665" target="_blank">Chamar no WhatsApp</a>
