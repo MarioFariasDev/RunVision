@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>RunVision - Planilhas de Corrida</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="../../AppData/Local/Temp/script.js"></script>
 </head>
 <body>
 <header>
@@ -62,41 +63,44 @@
         </div>
     </div>
 
-     <div id="dicas-tab" class="tab-content" data-reveal>
-  <div class="result-section">
-    <h2>Dicas de Treino em Vídeo</h2>
-    <div class="video-card-grid">
-      <a href="https://www.youtube.com/watch?v=7Y9XPpbmn2E" target="_blank" class="video-card">
-        ✅ Drills para Corrida (Técnica de Corrida)
-      </a>
-      <a href="https://www.youtube.com/watch?v=8KlZ3ze5HIY" target="_blank" class="video-card">
-        ✅ Fartlek na Prática
-      </a>
-      <a href="https://www.youtube.com/watch?v=1TFFULDQaUU" target="_blank" class="video-card">
-        ✅ Intervalado: Como Fazer Corretamente
-      </a>
-      <a href="https://www.youtube.com/watch?v=dOdDLstL__g" target="_blank" class="video-card">
-        ✅ Longão: O Treino Mais Importante
-      </a>
-      <a href="https://www.youtube.com/watch?v=EUve1lNtqOI" target="_blank" class="video-card">
-        ✅ Ritmo Controlado (Tempo Run)
-      </a>
-      <a href="https://www.youtube.com/watch?v=gXGzHWnLjLM" target="_blank" class="video-card">
-        ✅ Corrida Regenerativa: Importância
-      </a>
-      <a href="https://www.youtube.com/watch?v=fOaa-_WA5tk" target="_blank" class="video-card">
-        ✅ Técnicas de Educativos para Corrida
-      </a>
+    <div id="dicas-tab" class="tab-content" data-reveal>
+        <div class="result-section card-hover">
+            <h2>Dicas de Treino em Vídeo</h2>
+            <div class="video-card-grid">
+                <a href="https://www.youtube.com/watch?v=7Y9XPpbmn2E" target="_blank" class="video-card">
+                    ✅ Drills para Corrida (Técnica de Corrida)
+                </a>
+                <a href="https://www.youtube.com/watch?v=8KlZ3ze5HIY" target="_blank" class="video-card">
+                    ✅ Fartlek na Prática
+                </a>
+                <a href="https://www.youtube.com/watch?v=1TFFULDQaUU" target="_blank" class="video-card">
+                    ✅ Intervalado: Como Fazer Corretamente
+                </a>
+                <a href="https://www.youtube.com/watch?v=dOdDLstL__g" target="_blank" class="video-card">
+                    ✅ Longão: O Treino Mais Importante
+                </a>
+                <a href="https://www.youtube.com/watch?v=EUve1lNtqOI" target="_blank" class="video-card">
+                    ✅ Ritmo Controlado (Tempo Run)
+                </a>
+                <a href="https://www.youtube.com/watch?v=gXGzHWnLjLM" target="_blank" class="video-card">
+                    ✅ Corrida Regenerativa: Importância
+                </a>
+                <a href="https://www.youtube.com/watch?v=fOaa-_WA5tk" target="_blank" class="video-card">
+                    ✅ Técnicas de Educativos para Corrida
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+
 
     <div id="doar-tab" class="tab-content" data-reveal>
         <div class="result-section card-hover">
             <h2>Apoie este projeto</h2>
             <p>Esse projeto foi criado com muito carinho para ajudar corredores de todo o Brasil.</p>
-            <p><strong>Chave PIX:</strong> 55073583/0001-72</p>
-            <img src="imagem/qrcode.jpg" alt="QR Code Pix">
+            <div class="pix-box">
+                <p><strong>Chave PIX:</strong> 55073583/0001-72</p>
+            </div>
+            <img src="imagens/qrcode.jpg" alt="QR Code Pix">
             <p style="margin-top: 1rem;">Sua doação ajuda Mario Farias a realizar a ultramaratona de 110km!</p>
         </div>
     </div>
@@ -150,11 +154,16 @@
 
 <footer>
     <p>Projeto com propósito: Me ajude a correr 110km!</p>
-    <p><strong>PIX:</strong> CNPJ: 55073583/0001-72</p>
+
+    <div class="pix-footer-box">
+        <p><strong>PIX:</strong> CNPJ: 55073583/0001-72</p>
+    </div>
+
     <p style="margin-top: 1rem; font-size: 0.9rem; color: #ccc;">
-  © 2025 RunVision — Projeto criado por Mario Farias. Todos os direitos reservados.
-</p>
+        © 2025 RunVision — Projeto criado por Mario Farias. Todos os direitos reservados.
+    </p>
 </footer>
+
 
 <a href="https://wa.me/55092984413665" class="whatsapp-button" target="_blank">
     Fale comigo no WhatsApp
@@ -163,11 +172,11 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5KCMGYQ71"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-Z5KCMGYQ71');
+    gtag('config', 'G-Z5KCMGYQ71');
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
