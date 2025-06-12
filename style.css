@@ -363,33 +363,39 @@ a.button:hover {
     }
 }
 
-/* VIDEO CARD GRID */
+/* LINKS DE VÍDEO */
 .video-card-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  margin-top: 1.5rem;
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    margin-top: 1.5rem;
+    padding: 0 1rem;
 }
+
 .video-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  text-align: center;
-  background-color: #f5faff;
-  border: 2px solid #0D3B66;
-  border-radius: 12px;
-  font-weight: 500;
-  color: #0D3B66;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    text-align: center;
+    background-color: #f5faff;
+    border: 3px solid #0D3B66; /* Moldura reforçada */
+    border-radius: 16px;
+    font-weight: 600;
+    color: #0D3B66;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 .video-card:hover {
-  background-color: #eaf4ff;
-  transform: translateY(-2px);
-  border-color: #1e6091;
+    background-color: #eaf4ff;
+    transform: translateY(-4px);
+    border-color: #1e6091;
+    box-shadow: 0 8px 20px rgba(30, 96, 145, 0.25);
 }
+
+
 
 /* ALERTAS */
 .alerta {
