@@ -170,65 +170,97 @@ function gerarPlanilha(distance, level, days, semanasTotais) {
 }
 
 // PDF COM VISUAL MELHORADO
+// PDF PROFISSIONAL RUNVISION
 const { jsPDF } = window.jspdf;
 
 document.getElementById('download-pdf').addEventListener('click', function () {
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-
   const content = document.getElementById('planilha');
 
   // Clona e expande detalhes
   const clone = content.cloneNode(true);
   clone.querySelectorAll('details').forEach(d => d.open = true);
-
   const semanas = clone.querySelectorAll('.semana');
-  let y = 20;
 
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(16);
-  doc.text('Plano de Treino Personalizado – RunVision', 105, 15, { align: 'center' });
+  let y = 30;
+  let page = 1;
 
-  semanas.forEach((semana) => {
+  // 🔹 Cabeçalho padrão
+  function addHeader() {
+    doc.setFillColor(20, 33, 61); // Azul escuro
+    doc.rect(0, 0, 210, 20, 'F');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(14);
+    doc.setTextColor(255, 255, 255);
+    doc.text("RunVision – Plano de Treino Personalizado", 105, 12, { align: 'center' });
+  }
+
+  // 🔹 Rodapé padrão
+  function addFooter() {
+    doc.setFontSize(9);
+    doc.setTextColor(150, 150, 150);
+    doc.text(`Página ${page}`, 200, 290, { align: 'right' });
+    doc.text("Powered by RunVision", 10, 290);
+  }
+
+  // Primeiro cabeçalho
+  addHeader();
+
+  semanas.forEach((semana, index) => {
     const titulo = semana.querySelector('h3')?.innerText || '';
     const fase = semana.querySelector('p')?.innerText || '';
     const treinos = semana.querySelectorAll('li');
 
-    if (y > 260) {
+    if (y > 250) {
+      addFooter();
       doc.addPage();
-      y = 20;
+      page++;
+      y = 30;
+      addHeader();
     }
 
-    // Semana + fase
-    doc.setFontSize(13);
+    // 🔹 Caixa da semana
+    doc.setFillColor(245, 245, 245);
+    doc.roundedRect(8, y - 4, 194, 8, 2, 2, 'F');
+
+    doc.setFontSize(12);
     doc.setFont('helvetica', 'bold');
-    doc.setTextColor(33, 37, 41);
-    doc.text(titulo, 10, y);
-    y += 6;
+    doc.setTextColor(20, 33, 61);
+    doc.text(titulo, 12, y + 2);
 
-    doc.setFontSize(11);
-    doc.setFont('helvetica', 'normal');
+    y += 10;
+
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'italic');
     doc.setTextColor(100, 100, 100);
-    doc.text(fase, 10, y);
+    doc.text(fase, 12, y);
     y += 6;
 
-    // Treinos
+    // 🔹 Treinos
     treinos.forEach((treino) => {
-      if (y > 275) {
+      const texto = treino.innerText.trim();
+      const lines = doc.splitTextToSize("• " + texto, 180);
+
+      if (y + lines.length * 5 > 270) {
+        addFooter();
         doc.addPage();
-        y = 20;
+        page++;
+        y = 30;
+        addHeader();
       }
 
-      const texto = treino.innerText.trim();
-      const lines = doc.splitTextToSize(texto, 180);
       doc.setFontSize(10);
+      doc.setFont('helvetica', 'normal');
       doc.setTextColor(0, 0, 0);
-      doc.text(lines, 10, y);
+      doc.text(lines, 15, y);
       y += lines.length * 5 + 2;
     });
 
-    y += 5; // Espaço extra entre semanas
+    y += 8; // Espaço extra entre semanas
   });
 
+  addFooter();
   doc.save('planilha-runvision.pdf');
 });
 // Alternar abas
